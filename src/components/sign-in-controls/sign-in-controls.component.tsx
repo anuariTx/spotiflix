@@ -40,4 +40,4 @@ const mapStateToProps = (state: IAppState) => ({ isSignedIn: state.auth.isSigned
 export const SignInControlsComponent = connect(
   mapStateToProps,
   { signInAction },
-);
+)(SignInControls);
