@@ -13,7 +13,7 @@ export const NavigationMenuComponent = ({ match }: NavigationMenuComponentProps)
     <nav>
       <ul>
         <Link to={match.url}>Dashboard</Link>
-        <Link to={`${match.url}section`}>Section</Link>
+        <Link to={`${match.url}section/`}>Section</Link>
       </ul>
     </nav>
   );

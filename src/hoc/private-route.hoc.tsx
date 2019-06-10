@@ -23,7 +23,7 @@ const PrivateRoute = ({ Component, isSignedIn, location, ...rest }: PrivateRoute
         isSignedIn ? (
           <Component {...props} />
         ) : (
-          <Redirect to={{ pathname: '/login', state: { referrer: location } }} />
+          <Redirect to={{ pathname: '/login/', state: { referrer: location } }} />
         )
       }
     />
