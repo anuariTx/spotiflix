@@ -26,6 +26,7 @@
       "@rdx/*": ["shared/rdx/*"],
       "@routes/*": ["shared/routes/*"],
       "@shared-components/*": ["shared/components/*"],
+      "@shared-containers/*": ["shared/containers/*"],
       "@themes/*": ["shared/themes/*"],
       "@utils/*": ["shared/utils/*"]
     }

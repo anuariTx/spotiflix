@@ -16,6 +16,7 @@
           "@rdx": "./src/shared/rdx",
           "@routes": "./src/shared/routes",
           "@shared-components": "./src/shared/components",
+          "@shared-containers": "./src/shared/containers",
           "@themes": "./src/shared/themes",
           "@utils": "./src/shared/utils"
         }

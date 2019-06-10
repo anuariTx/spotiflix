@@ -1,20 +1,20 @@
 import React from 'react';
+
 import { PrivateAppRoutes } from '@routes/private-app.routes';
-// import Header from '../shared/components/layout/Header/Header';
-// import Nav from '../shared/components/layout/Nav/Nav';
+
+import { IMatch } from '@interfaces/match.interface';
+
+import { HeaderContainer } from '@shared-containers/layout/header/header.container';
+import { NavigationMenuContainer } from '@shared-containers/layout/navigation-menu/navigation-menu.container';
 
 export type PrivateAppProps = {
-  match: {
-    path: string;
-  };
+  match: IMatch;
 };
 
 export const PrivateAppContainer = ({ match }: PrivateAppProps) => (
   <div className="private-app">
-    {/*
-        <Header />
-        <Nav match={match} location={location} />
-        */}
+    <HeaderContainer />
+    <NavigationMenuContainer match={match} />
     <PrivateAppRoutes match={match} />
   </div>
 );
