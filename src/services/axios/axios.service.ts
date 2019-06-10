@@ -1,67 +1,75 @@
-import axios from 'axios';
-import _ from 'lodash';
-import { BASE_URL, HEADERS, getAuthorizationHeader } from './backendConfig';
+import axios, { AxiosRequestConfig, CancelTokenSource, CancelTokenStatic, Method } from 'axios';
 
-class backendAPI {
-  constructor() {
-    this.baseURL = BASE_URL;
+import _ from 'lodash';
+
+import { BASE_URL, BEARER_KEY, HEADERS, getAuthorizationHeader } from './axios.config';
+
+interface IRequestParams {
+  endpoint: string;
+  headers?: object;
+  body?: object;
+  method?: Method;
+}
+type Request = (params: IRequestParams) => Promise<any>;
+
+export class AxiosService {
+  private baseURL: string;
+  private bearerKey: string;
+  private headers: object;
+  private cancelGlobal: CancelTokenStatic;
+  private source: CancelTokenSource;
+
+  constructor(baseURL: string = BASE_URL, bearerKey: string = BEARER_KEY) {
+    this.baseURL = baseURL;
+    this.bearerKey = bearerKey;
     this.headers = HEADERS;
     this.cancelGlobal = axios.CancelToken;
     this.source = this.cancelGlobal.source();
   }
 
-  get(endpoint, headers = {}) {
+  get: Request = reqParams => {
     return this.request({
-      url: endpoint,
+      ...reqParams,
       method: 'get',
-      headers,
     });
-  }
+  };
 
-  post(endpoint, body = {}, headers = {}) {
+  post: Request = reqParams => {
     return this.request({
-      url: endpoint,
+      ...reqParams,
       method: 'post',
-      body,
-      headers,
     });
-  }
+  };
 
-  put(endpoint, body = {}, headers = {}) {
+  put: Request = reqParams => {
     return this.request({
-      url: endpoint,
+      ...reqParams,
       method: 'put',
-      body,
-      headers,
     });
-  }
+  };
 
-  patch(endpoint, body = {}, headers = {}) {
+  patch: Request = reqParams => {
     return this.request({
-      url: endpoint,
+      ...reqParams,
       method: 'patch',
-      body,
-      headers,
     });
-  }
+  };
 
-  delete(endpoint, body = {}, headers = {}) {
+  delete: Request = reqParams => {
     return this.request({
-      url: endpoint,
+      ...reqParams,
       method: 'delete',
-      body,
-      headers,
     });
-  }
+  };
 
-  cancelRequest(msg) {
+  cancelRequest(msg: string): void {
     this.source.cancel(msg);
   }
 
-  request({ url, method, body = {}, headers = {} }) {
-    this.headers = { ...getAuthorizationHeader(), ...this.headers };
+  request: Request = ({ endpoint, headers = {}, body = {}, method }) => {
+    this.headers = { ...getAuthorizationHeader(this.bearerKey), ...this.headers };
 
-    const requestSetup = {
+    const requestSetup: AxiosRequestConfig = {
       method,
       baseURL: this.baseURL,
       headers: this.headers,
@@ -74,7 +82,7 @@ class backendAPI {
     }
 
     return new Promise((resolve, reject) =>
-      axios(url, requestSetup)
+      axios(endpoint, requestSetup)
         .then(response => {
           if (response.status === 200) {
             return resolve(response);
@@ -88,7 +96,5 @@ class backendAPI {
           return reject(error);
         }),
     );
-  }
+  };
 }
-
-export default backendAPI;
