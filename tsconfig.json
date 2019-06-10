@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -17,9 +13,21 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "baseUrl": "./src",
+    "paths": {
+      "@auth/*": ["auth/*"],
+      "@components/*": ["components/*"],
+      "@containers/*": ["containers/*"],
+      "@data/*": ["data/*"],
+      "@assets/*": ["shared/assets/*"],
+      "@constants/*": ["shared/constants/*"],
+      "@rdx/*": ["shared/rdx/*"],
+      "@routes/*": ["shared/routes/*"],
+      "@shared-components/*": ["shared/components/*"],
+      "@themes/*": ["shared/themes/*"],
+      "@utils/*": ["shared/utils/*"]
+    }
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

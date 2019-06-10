@@ -5,8 +5,8 @@ import { ILocation } from '../../shared/interfaces/location.interface';
 import { Redirect } from 'react-router';
 
 import { connect } from 'react-redux';
-import { signInAction } from '../../shared/rdx/actions/auth.action';
-import { IAppState } from '../../shared/rdx/reducers/root.reducer';
+import { signInAction } from '@rdx/actions/auth.action';
+import { IAppState } from '@rdx/reducers/root.reducer';
 
 type SignInControlsProps = { isSignedIn: boolean; signInAction: Function; location: ILocation };
 
@@ -40,4 +40,4 @@ const mapStateToProps = (state: IAppState) => ({ isSignedIn: state.auth.isSigned
 export const SignInControlsComponent = connect(
   mapStateToProps,
   { signInAction },
-);
+)(SignInControls);

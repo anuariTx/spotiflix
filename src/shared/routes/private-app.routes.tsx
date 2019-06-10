@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { DashboardContainer } from '../../containers/dashboard/dashboard.container';
+import { DashboardContainer } from '@containers/dashboard/dashboard.container';
 
 export const PrivateAppRoutes = ({ match }: any) => (
   <Switch>
