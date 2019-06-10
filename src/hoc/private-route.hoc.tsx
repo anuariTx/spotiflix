@@ -1,39 +1,37 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
-//import { signIn } from '../shared/redux/actions/auth';
 
-export const PrivateRouteHOC = ({
-  component: Component,
-  isSignedIn,
-  isTokenValid,
-  signInAction,
-  ...rest
-}: any) => {
+import { IAppState } from '@rdx/reducers/root.reducer';
+import { ILocation } from '@interfaces/location.interface';
+import { PrivateAppProps } from '@containers/private-app.container';
+
+import { Route, Redirect } from 'react-router-dom';
+
+import { connect } from 'react-redux';
+
+type PrivateRouteProps = {
+  path: string;
+  Component: React.ComponentType<PrivateAppProps>;
+  isSignedIn: boolean;
+  location?: ILocation;
+};
+
+const PrivateRoute = ({ Component, isSignedIn, location, ...rest }: PrivateRouteProps) => {
   return (
     <Route
       {...rest}
       render={(props: any) =>
-        isSignedIn === true || isTokenValid === true ? (
+        isSignedIn ? (
           <Component {...props} />
         ) : (
-          <Redirect
-            to={{ pathname: '/login', state: { referrer: props.location } }}
-          />
+          <Redirect to={{ pathname: '/login', state: { referrer: location } }} />
         )
       }
     />
   );
 };
 
-/*
-const mapStateToProps = state => ({
+const mapStateToProps = (state: IAppState) => ({
   isSignedIn: state.auth.isSignedIn,
-  isTokenValid: state.auth.validToken
 });
 
-export default connect(
-  mapStateToProps,
-  { signInAction: signIn }
-)(PrivateRoute);
-*/
+export const PrivateRouteHOC = connect(mapStateToProps)(PrivateRoute);

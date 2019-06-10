@@ -6,7 +6,7 @@ import { SignInPageContainer } from '@containers/sign-in-page/sign-in-page.conta
 
 export const AppRoutes = () => (
   <Switch>
-    <PrivateRouteHOC path="/app" component={PrivateAppContainer} />
+    <PrivateRouteHOC path="/app" Component={PrivateAppContainer} />
     <Route path="/login" component={SignInPageContainer} />
     <Redirect to="/app" />
   </Switch>
