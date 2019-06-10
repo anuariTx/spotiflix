@@ -6,9 +6,6 @@ const SignInPage = (props: any) => {
   return <div className="sign-in__page" />;
 };
 
-const mapStateToProps = (state: any) => ({
-  isSignedIn: state.auth.isSignedIn,
-  isTokenValid: state.auth.validToken
-});
+const mapStateToProps = (state: any) => ({});
 
 export const SignInPageContainer = connect(mapStateToProps)(SignInPage);

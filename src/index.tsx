@@ -8,7 +8,8 @@ import { RootReducer } from './shared/rdx/reducers/root.reducer';
 import { AppContainer } from './containers/app/app.container';
 
 // eslint-disable-next-line no-underscore-dangle
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers =
+  (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   RootReducer,
   composeEnhancers(applyMiddleware(reduxThunk))
