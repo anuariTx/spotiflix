@@ -1,7 +1,5 @@
 {
-  "presets": [
-    "react-app"
-  ],
+  "presets": ["react-app"],
   "plugins": [
     [
       "module-resolver",
@@ -11,9 +9,10 @@
           "@auth": "./src/auth",
           "@components": "./src/components",
           "@containers": "./src/containers",
-          "@data": "./src/data",
+          "@services": "./src/services",
           "@assets": "./src/shared/assets",
           "@constants": "./src/shared/constants",
+          "@interfaces/*": "shared/interfaces/*",
           "@rdx": "./src/shared/rdx",
           "@routes": "./src/shared/routes",
           "@shared-components": "./src/shared/components",
