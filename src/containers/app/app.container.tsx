@@ -1,14 +1,33 @@
 import React from 'react';
+
 import { Router } from 'react-router-dom';
 import { routerHistory } from '@shared/router.history';
 import { AppRoutes } from '@routes/app.routes';
 
-export const AppContainer = () => {
+import { connect } from 'react-redux';
+import { IAppState } from '@rdx/reducers/root.reducer';
+
+import { ThemeProvider } from 'react-jss';
+import { configRootTheme } from '@themes/root.theme';
+
+type AppProps = {
+  theme: string;
+};
+
+const App = ({ theme }: AppProps) => {
   return (
     <Router history={routerHistory}>
-      <div>
-        <AppRoutes />
-      </div>
+      <ThemeProvider theme={configRootTheme(theme)}>
+        <div>
+          <AppRoutes />
+        </div>
+      </ThemeProvider>
     </Router>
   );
 };
+
+const mapStateToProps = (state: IAppState) => ({
+  theme: state.theme.activeTheme,
+});
+
+export const AppContainer = connect(mapStateToProps)(App);
