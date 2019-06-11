@@ -12,6 +12,7 @@ type PrivateRouteProps = {
   path: string;
   Component: React.ComponentType<PrivateAppProps>;
   isSignedIn: boolean;
+  strict: boolean
   location?: ILocation;
 };
 

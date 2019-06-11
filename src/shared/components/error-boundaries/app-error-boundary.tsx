@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { RenderReturn } from '@shared/types/render.type';
+
 interface IAppErrorBoundaryState {
   hasError: boolean;
   error: object | null;
@@ -15,16 +17,7 @@ export class AppErrorBoundary extends React.Component {
     return { hasError: true, error };
   }
 
-  render():
-    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
-    | string
-    | number
-    | {}
-    | React.ReactNodeArray
-    | React.ReactPortal
-    | boolean
-    | null
-    | undefined {
+  render(): RenderReturn {
     return this.state.hasError ? <div>Something went wrong</div> : this.props.children;
   }
 }

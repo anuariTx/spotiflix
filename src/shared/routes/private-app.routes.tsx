@@ -13,7 +13,7 @@ type PrivateAppProps = {
 
 export const PrivateAppRoutes = ({ match }: PrivateAppProps) => (
   <Switch>
-    <Route exact strict path={match.path} component={DashboardContainer} />
+    <Route strict exact path={match.path} component={DashboardContainer} />
     <Route strict path={`${match.path}section/`} component={SectionContainer} />
     <Route strict path={`${match.path}settings/`} component={SettingsContainer} />
     <Redirect to={match.path} />
