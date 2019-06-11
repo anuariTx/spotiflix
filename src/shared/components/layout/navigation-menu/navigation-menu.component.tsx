@@ -14,6 +14,7 @@ export const NavigationMenuComponent = ({ match }: NavigationMenuComponentProps)
       <ul>
         <Link to={match.url}>Dashboard</Link>
         <Link to={`${match.url}section/`}>Section</Link>
+        <Link to={`${match.url}settings/`}>Settings</Link>
       </ul>
     </nav>
   );
