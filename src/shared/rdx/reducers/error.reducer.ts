@@ -1,14 +1,19 @@
 import { SET_ERROR } from './../action-types';
 import { IAction } from './../actions/actions.interfaces';
 
+export type ReducerError = null | {
+  containerName: string;
+  error: Error;
+};
+
 export interface IErrorState {
   title: string;
-  error: any;
+  error: ReducerError;
 }
 
 const INITIAL_STATE: IErrorState = {
   title: '',
-  error: {},
+  error: null,
 };
 
 export const errorReducer = (state = INITIAL_STATE, { type, payload }: IAction) => {

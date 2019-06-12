@@ -1,3 +1,7 @@
 import React from 'react';
 
-export const sampleComponent = () => <div>I'm a sample text component.</div>;
+type SampleComponentProps = {
+  message: string;
+};
+
+export const SampleComponent = ({ message }: SampleComponentProps) => <div>{message}</div>;
