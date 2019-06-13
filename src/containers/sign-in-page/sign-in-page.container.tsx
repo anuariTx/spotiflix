@@ -4,6 +4,7 @@ import { ILocation } from '@interfaces/location.interface';
 import { IAppState } from '@rdx/reducers/root.reducer';
 
 import { connect } from 'react-redux';
+import { Dispatch, bindActionCreators } from 'redux';
 import { signInAction } from '@rdx/actions/auth.action';
 
 import { SignInControlsComponent } from '@components/sign-in-controls/sign-in-controls.component';
@@ -26,7 +27,11 @@ const mapStateToProps = (state: IAppState) => ({
   isSignedIn: state.auth.isSignedIn,
 });
 
+const mapDispatchToProps = {
+  signInAction: signInAction.request,
+};
+
 export const SignInPageContainer = connect(
   mapStateToProps,
-  { signInAction },
+  mapDispatchToProps,
 )(SignInPage);

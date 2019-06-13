@@ -1,26 +1,26 @@
 import { handleActions } from 'redux-actions';
 
-import { fetchData } from '@rdx/actions/fetch-data.action';
+import { fetchDataAction } from '@rdx/actions/fetch-data.action';
 
-export type FetchData = null | {
+export type FetchDataType = null | {
   containerName: string;
   data: any;
   hasLoadedData: boolean;
 };
 
 export interface IFetchDataState {
-  [key: string]: FetchData;
+  [key: string]: FetchDataType;
 }
 
 const INITIAL_STATE: IFetchDataState = {};
 
 export const fetchDataReducer = handleActions(
   {
-    [fetchData.REQUEST]: (state, { payload }: any) => ({
+    [fetchDataAction.REQUEST]: (state, { payload }: any) => ({
       ...state,
       [payload.containerName]: { ...state[payload.containerName], hasLoadedData: false },
     }),
-    [fetchData.SUCCESS]: (state, { payload }: any) => ({
+    [fetchDataAction.SUCCESS]: (state, { payload }: any) => ({
       ...state,
       [payload.containerName]: { ...state[payload.containerName], ...payload },
     }),

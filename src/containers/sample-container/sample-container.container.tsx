@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 
+import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { fetchDataAction } from '@rdx/actions/fetch-data.action';
 
@@ -9,10 +10,10 @@ type SectionContainerProps = {
   fetchDataAction: Function;
 };
 
-const Sample = ({ fetchDataAction }: SectionContainerProps) => {
+const Sample = (props: SectionContainerProps) => {
   useEffect(() => {
-    fetchDataAction();
-  }, [fetchDataAction]);
+    props.fetchDataAction();
+  }, [props]);
 
   return (
     <ErrorBoundaryHOC
@@ -24,7 +25,9 @@ const Sample = ({ fetchDataAction }: SectionContainerProps) => {
   );
 };
 
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(fetchDataAction, dispatch);
+
 export const SampleContainer = connect(
   null,
-  { fetchDataAction },
+  mapDispatchToProps,
 )(Sample);
