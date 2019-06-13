@@ -12,7 +12,7 @@ export interface IErrorState {
 
 const INITIAL_STATE: IErrorState = {};
 
-export const errorReducer = (state = INITIAL_STATE, { type, payload }: IAction) => {
+export const errorReducer = (state: IErrorState = INITIAL_STATE, { type, payload }: IAction) => {
   switch (type) {
     case SET_ERROR:
       return { ...state, [payload.containerName]: payload };
