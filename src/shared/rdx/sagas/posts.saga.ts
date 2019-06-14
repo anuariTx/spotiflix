@@ -3,11 +3,17 @@ import { AxiosService } from '@services/axios/axios.service';
 import { takeLatest, put, call } from 'redux-saga/effects';
 import { setPostsAction } from '@rdx/actions/posts.action';
 
+let postService: any;
+
 function* fetchPostService() {
-  const postService = new AxiosService('https://jsonplaceholder.typicode.com/');
+  postService = new AxiosService('https://jsonplaceholder.typicode.com/');
   const { data }: any = yield postService.get({ endpoint: 'posts' });
 
   return data;
+}
+
+function* cancelFetchService(params: any) {
+  yield postService.cancelRequest(params.payload);
 }
 
 function* fetchPostRequest() {
@@ -25,15 +31,18 @@ function* fetchPostRequest() {
       }),
     );
   } catch (error) {
-    yield put(
-      setPostsAction.failure({
-        title: 'Error when signing in.',
-        message: 'Ops',
-      }),
-    );
+    if (!error.wasCancelled) {
+      yield put(
+        setPostsAction.failure({
+          title: 'Error when fetching posts.',
+          message: 'Oops',
+        }),
+      );
+    }
   }
 }
 
 export function* fetchPostsSaga() {
   yield takeLatest(setPostsAction.REQUEST, fetchPostRequest);
+  yield takeLatest(setPostsAction.FULFILL, cancelFetchService);
 }

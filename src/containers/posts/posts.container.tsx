@@ -9,15 +9,16 @@ import { setPostsAction } from '@rdx/actions/posts.action';
 const PostComponent = lazy(() => import('@components/post/post.lazy'));
 
 type PostsProps = {
-  fetchPostsAction: Function;
   posts: PostType[];
+  fetchPostsAction: Function;
+  cancelPostsAction: Function;
 };
 
-const Posts = ({ posts, fetchPostsAction }: PostsProps) => {
+const Posts = ({ posts, fetchPostsAction, cancelPostsAction }: PostsProps) => {
   useEffect(() => {
     fetchPostsAction();
-    ///return () => service.cancelRequest('Request canceled at PostsContainer');
-  }, [fetchPostsAction]);
+    return () => cancelPostsAction('Canceled fetch posts');
+  }, [fetchPostsAction, cancelPostsAction]);
 
   const renderPosts = posts.map(post => {
     return (
@@ -40,6 +41,7 @@ const mapStateToProps = (state: IAppState) => ({
 
 const mapDispatchToProps = {
   fetchPostsAction: setPostsAction.request,
+  cancelPostsAction: setPostsAction.fulfill,
 };
 
 export const PostsContainer = connect(
