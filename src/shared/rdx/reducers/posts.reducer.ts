@@ -1,15 +1,13 @@
-import { PostType } from '@shared-types/post.type';
 import { ErrorType } from '@shared/types/error.type';
 import { IAction } from '@interfaces/action.interface';
 
 import { handleActions } from 'redux-actions';
 
 import { setPostsAction } from '@rdx/actions/posts.action';
+import { IPosts } from '@interfaces/post.interface';
 
 export interface IPostsState {
-  posts: {
-    [key: string]: PostType;
-  };
+  items: IPosts;
   isLoadingData: boolean;
   hasError: boolean;
   postsUnmounted: boolean;
@@ -17,7 +15,7 @@ export interface IPostsState {
 }
 
 const INITIAL_STATE: IPostsState = {
-  posts: {},
+  items: {},
   isLoadingData: false,
   hasError: false,
   postsUnmounted: false,
@@ -25,7 +23,7 @@ const INITIAL_STATE: IPostsState = {
 
 export const postsReducer = handleActions(
   {
-    [setPostsAction.REQUEST]: (state: any, { payload }: IAction) => ({
+    [setPostsAction.REQUEST]: (state: any) => ({
       ...state,
       isLoadingData: true,
       postsUnmounted: false,
@@ -38,9 +36,9 @@ export const postsReducer = handleActions(
     [setPostsAction.SUCCESS]: (state: any, { payload }: IAction) => ({
       ...state,
       isLoadingData: false,
-      posts: { ...payload },
+      items: { ...payload },
     }),
-    [setPostsAction.FULFILL]: (state: any, { payload }: IAction) => ({
+    [setPostsAction.FULFILL]: (state: any) => ({
       ...state,
       isLoadingData: false,
       postsUnmounted: true,

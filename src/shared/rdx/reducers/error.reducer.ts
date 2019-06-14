@@ -1,5 +1,6 @@
-import { SET_ERROR } from '../action-types';
 import { IAction } from '@interfaces/action.interface';
+import { handleActions } from 'redux-actions';
+import { setErrorAction, clearErrorAction } from '@rdx/actions/error.action';
 
 export type ReducerError = null | {
   containerName: string;
@@ -12,11 +13,16 @@ export interface IErrorState {
 
 const INITIAL_STATE: IErrorState = {};
 
-export const errorReducer = (state: IErrorState = INITIAL_STATE, { type, payload }: IAction) => {
-  switch (type) {
-    case SET_ERROR:
-      return { ...state, [payload.containerName]: payload };
-    default:
-      return state;
-  }
-};
+export const errorReducer = handleActions(
+  {
+    [setErrorAction.FULFILL]: (state: IErrorState, { payload }: IAction) => ({
+      ...state,
+      [payload.containerName]: payload,
+    }),
+    [clearErrorAction.FULFILL]: (state: IErrorState, { payload }: IAction) => ({
+      ...state,
+      [payload.containerName]: undefined,
+    }),
+  },
+  INITIAL_STATE,
+);

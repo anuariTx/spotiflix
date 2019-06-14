@@ -6,7 +6,7 @@ import { PostsContainer } from '@containers/posts/posts.container';
 export const SectionContainer = () => (
   <ErrorBoundaryHOC
     fallback={<div>Something went wrong</div>}
-    containerName="SectionPostsContainer"
+    containerName="sectionPostsContainer"
   >
     <PostsContainer />
   </ErrorBoundaryHOC>

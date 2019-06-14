@@ -3,32 +3,27 @@ import React from 'react';
 import { RenderReturn } from '@shared/types/render.type';
 
 import { connect } from 'react-redux';
-import { setErrorAction } from '@rdx/actions/error.action';
+import { IAppState } from '@rdx/reducers/root.reducer';
+import { IErrorState } from '@rdx/reducers/error.reducer';
 
 type ErrorBoundaryProps = {
   children: RenderReturn;
   fallback: RenderReturn;
   containerName: string;
-  setErrorAction: Function;
+  errors: IErrorState;
 };
 
-type ErrorBoundaryState = {
-  hasError: boolean;
-  error: Error | null;
-};
+type ErrorBoundaryState = {};
 
 class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
   state = {
     hasError: false,
-    error: null,
   };
 
-  static getDerivedStateFromError(error: Error): object {
-    return { hasError: true, error };
-  }
-
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
-    setErrorAction({ containerName: this.props.containerName, error });
+    if (this.props.errors[this.props.containerName] !== undefined) {
+      this.setState({ hasError: true });
+    }
   }
 
   render(): RenderReturn {
@@ -42,7 +37,8 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
   }
 }
 
-export const ErrorBoundaryHOC = connect(
-  null,
-  { setErrorAction },
-)(ErrorBoundary);
+const mapStateToProps = (state: IAppState) => ({
+  errors: state.error,
+});
+
+export const ErrorBoundaryHOC = connect(mapStateToProps)(ErrorBoundary);
