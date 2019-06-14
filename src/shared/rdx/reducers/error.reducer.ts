@@ -1,5 +1,5 @@
-import { SET_ERROR } from './../action-types';
-import { IAction } from './../actions/actions.interfaces';
+import { SET_ERROR } from '../action-types';
+import { IAction } from '../actions/actions.interfaces';
 
 export type ReducerError = null | {
   containerName: string;
@@ -7,19 +7,15 @@ export type ReducerError = null | {
 };
 
 export interface IErrorState {
-  title: string;
-  error: ReducerError;
+  [key: string]: ReducerError;
 }
 
-const INITIAL_STATE: IErrorState = {
-  title: '',
-  error: null,
-};
+const INITIAL_STATE: IErrorState = {};
 
 export const errorReducer = (state = INITIAL_STATE, { type, payload }: IAction) => {
   switch (type) {
     case SET_ERROR:
-      return { ...state, error: payload };
+      return { ...state, [payload.containerName]: payload };
     default:
       return state;
   }

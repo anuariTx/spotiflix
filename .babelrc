@@ -13,6 +13,7 @@
           "@assets": "./src/shared/assets",
           "@constants": "./src/shared/constants",
           "@hoc": "./src/hoc",
+          "@hook": "./src/hook",
           "@interfaces": "shared/interfaces/*",
           "@rdx": "./src/shared/rdx",
           "@routes": "./src/shared/routes",

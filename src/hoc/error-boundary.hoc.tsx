@@ -8,6 +8,7 @@ import { setErrorAction } from '@rdx/actions/error.action';
 type ErrorBoundaryProps = {
   children: RenderReturn;
   fallback: RenderReturn;
+  containerName: string;
   setErrorAction: Function;
 };
 
@@ -27,7 +28,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
-    setErrorAction({ error });
+    setErrorAction({ containerName: this.props.containerName, error });
   }
 
   render(): RenderReturn {
