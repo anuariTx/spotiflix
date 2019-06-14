@@ -1,3 +1,7 @@
 import React from 'react';
 
-export const DashboardContainer = (props: any) => <div>Dashboard hehe</div>;
+import { DashboardComponent } from '@components/dashboard/dashboard.component';
+
+export const DashboardContainer = () => {
+  return <DashboardComponent />;
+};

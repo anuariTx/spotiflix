@@ -1,6 +1,6 @@
 import { applyMiddleware, compose, Store } from 'redux';
 
-import { IAppState, RootReducer } from './rdx/reducers/root.reducer';
+import { IAppState, RootReducer } from '@rdx/reducers/root.reducer';
 
 import { createStore } from 'redux';
 import reduxThunk from 'redux-thunk';

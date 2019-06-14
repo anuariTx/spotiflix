@@ -1,20 +1,21 @@
-import { SET_ERROR } from './../action-types';
-import { IAction } from './../actions/actions.interfaces';
+import { SET_ERROR } from '../action-types';
+import { IAction } from '../actions/actions.interfaces';
+
+export type ReducerError = null | {
+  containerName: string;
+  error: Error;
+};
 
 export interface IErrorState {
-  title: string;
-  error: any;
+  [key: string]: ReducerError;
 }
 
-const INITIAL_STATE: IErrorState = {
-  title: '',
-  error: {},
-};
+const INITIAL_STATE: IErrorState = {};
 
 export const errorReducer = (state = INITIAL_STATE, { type, payload }: IAction) => {
   switch (type) {
     case SET_ERROR:
-      return { ...state, error: payload };
+      return { ...state, [payload.containerName]: payload };
     default:
       return state;
   }

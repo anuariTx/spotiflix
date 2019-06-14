@@ -13,8 +13,8 @@ interface IRequestParams {
 type Request = (params: IRequestParams) => Promise<any>;
 
 export class AxiosService {
-  private baseURL: string;
-  private bearerKey: string;
+  private readonly baseURL: string;
+  private readonly bearerKey: string;
   private headers: object;
   private cancelGlobal: CancelTokenStatic;
   private source: CancelTokenSource;

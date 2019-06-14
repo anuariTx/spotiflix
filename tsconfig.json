@@ -19,6 +19,8 @@
       "@auth/*": ["auth/*"],
       "@components/*": ["components/*"],
       "@containers/*": ["containers/*"],
+      "@hoc/*": ["hoc/*"],
+      "@hook/*": ["hook/*"],
       "@services/*": ["services/*"],
       "@assets/*": ["shared/assets/*"],
       "@constants/*": ["shared/constants/*"],
