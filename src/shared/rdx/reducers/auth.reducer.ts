@@ -1,24 +1,26 @@
 import { handleActions, combineActions } from 'redux-actions';
-import { IAction } from '../actions/actions.interfaces';
+import { IAction } from '@interfaces/action.interface';
+import { ErrorType } from '@shared/types/error.type';
 import { signInAction, signOutAction } from '@rdx/actions/auth.action';
 
 export type UserType = {
-  id: string | undefined;
-  username: string | undefined;
+  id?: string;
+  username?: string;
 };
 export interface IAuthState {
   isSignedIn: boolean;
   isLoadingData: boolean;
-  user: UserType;
+  hasError: boolean;
+  user?: UserType;
+  error?: ErrorType;
 }
 
 const INITIAL_STATE: IAuthState = {
   isSignedIn: false,
   isLoadingData: false,
-  user: {
-    id: undefined,
-    username: undefined,
-  },
+  hasError: false,
+  error: undefined,
+  user: undefined,
 };
 
 export const authReducer = handleActions(
@@ -27,16 +29,22 @@ export const authReducer = handleActions(
       ...state,
       isLoadingData: true,
     }),
-    [signInAction.SUCCESS]: (state: IAuthState, { payload }: any) => ({
+    [combineActions(signInAction.REQUEST, signOutAction.REQUEST) as any]: (
+      state: any,
+      { payload }: IAction,
+    ) => ({
+      ...state,
+      hasError: true,
+      error: { ...payload },
+    }),
+    [signInAction.SUCCESS]: (state: IAuthState, { payload }: IAction) => ({
+      user: payload.user,
       isLoadingData: false,
       isSignedIn: true,
-      user: payload.user,
+      hasError: false,
     }),
-    [signOutAction.SUCCESS]: (state: IAuthState, { payload }: any) => ({
-      ...state,
-      isLoadingData: false,
-      isSignedIn: false,
-      user: undefined,
+    [signOutAction.SUCCESS]: () => ({
+      INITIAL_STATE,
     }),
   },
   INITIAL_STATE,

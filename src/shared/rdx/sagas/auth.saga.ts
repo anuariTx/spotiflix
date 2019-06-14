@@ -13,16 +13,25 @@ function* signInService() {
 }
 
 function* signInRequest() {
-  yield call(signInService);
+  try {
+    yield call(signInService);
 
-  const userId = uuidv4();
-  const userName = faker.name.findName();
+    const userId = uuidv4();
+    const userName = faker.name.findName();
 
-  yield put(
-    signInAction.success({
-      user: { userId, userName },
-    }),
-  );
+    yield put(
+      signInAction.success({
+        user: { id: userId, username: userName },
+      }),
+    );
+  } catch (error) {
+    yield put(
+      signInAction.failure({
+        title: 'Error when signing in.',
+        message: 'Ops',
+      }),
+    );
+  }
 }
 
 export function* signInSaga() {
@@ -34,8 +43,17 @@ function* signOutService() {
 }
 
 function* signOutRequest() {
-  yield call(signOutService);
-  yield put(signOutAction.success());
+  try {
+    yield call(signOutService);
+    yield put(signOutAction.success());
+  } catch (error) {
+    yield put(
+      signOutAction.failure({
+        title: 'Error when signing out.',
+        message: 'Ops',
+      }),
+    );
+  }
 }
 
 export function* signOutSaga() {

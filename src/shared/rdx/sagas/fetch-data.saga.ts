@@ -1,30 +1,27 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { fetchDataAction } from '@rdx/actions/fetch-data.action';
 
-import { FetchDataType } from '@rdx/reducers/fetch-data.reducer';
-
 const timeout = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 const fakeRequest = async () => {
   await timeout(1500);
   const luck = Math.floor(Math.random() * 10) >= 4;
+
   if (!luck) {
     throw new Error('Error on fake request');
   }
 
-  const payload: FetchDataType = {
+  return {
     containerName: 'SectionSampleContainer',
     data: 'HELLO! Fake request completed',
-    hasLoadedData: true,
   };
-  return payload;
 };
 
-export function* fetchDataService() {
+function* fetchDataService() {
   return yield call(fakeRequest);
 }
 
-export function* fetchDataRequest() {
+function* fetchDataRequest() {
   const payload = yield call(fetchDataService);
 
   yield put(

@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Post } from '@rdx/reducers/posts.reducer';
+import { PostType } from '@shared/types/post.type';
 
 import LazyLoad from 'react-lazyload';
 
 type PostComponentProps = {
-  post: Post;
+  post: PostType;
 };
 
 export const PostComponent = ({ post }: PostComponentProps) => (

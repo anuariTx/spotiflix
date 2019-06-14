@@ -1,22 +1,42 @@
-import { SET_POSTS } from '../action-types';
-import { IAction } from '../actions/actions.interfaces';
+import { PostType } from './../../types/post.type';
+import { ErrorType } from '@shared/types/error.type';
+import { IAction } from '@interfaces/action.interface';
 
-export type Post = {
-  id: string;
-  title: string;
-};
+import { handleActions } from 'redux-actions';
+
+import { setPostsAction } from '@rdx/actions/posts.action';
 
 export interface IPostsState {
-  [key: string]: Post;
+  posts: {
+    [key: string]: PostType;
+  };
+  isLoadingData: boolean;
+  hasError: boolean;
+  error?: ErrorType;
 }
 
-const INITIAL_STATE: IPostsState = {};
-
-export const postsReducer = (state = INITIAL_STATE, { type, payload }: IAction) => {
-  switch (type) {
-    case SET_POSTS:
-      return { ...state, ...payload };
-    default:
-      return state;
-  }
+const INITIAL_STATE: IPostsState = {
+  posts: {},
+  isLoadingData: false,
+  hasError: false,
 };
+
+export const postsReducer = handleActions(
+  {
+    [setPostsAction.REQUEST]: (state: any, { payload }: IAction) => ({
+      ...state,
+      isLoadingData: true,
+    }),
+    [setPostsAction.FAILURE]: (state: any, { payload }: IAction) => ({
+      isLoadingData: false,
+      hasError: true,
+      error: payload,
+    }),
+    [setPostsAction.SUCCESS]: (state: any, { payload }: IAction) => ({
+      ...state,
+      isLoadingData: false,
+      posts: { ...payload },
+    }),
+  },
+  INITIAL_STATE,
+);

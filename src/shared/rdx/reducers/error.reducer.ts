@@ -1,5 +1,5 @@
 import { SET_ERROR } from '../action-types';
-import { IAction } from '../actions/actions.interfaces';
+import { IAction } from '@interfaces/action.interface';
 
 export type ReducerError = null | {
   containerName: string;
