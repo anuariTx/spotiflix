@@ -1,12 +1,25 @@
 import React from 'react';
+import faker from 'faker';
 
-type HeaderComponentProps = { username: string | undefined };
+import './header.styles.css';
 
-export const HeaderComponent = ({ username }: HeaderComponentProps) => {
+type HeaderComponentProps = { user: any | undefined; signOutAction: Function };
+
+export const HeaderComponent = ({ user, signOutAction }: HeaderComponentProps) => {
+  const handleSignOut = () => signOutAction();
+
   return (
-    <div>
-      <p>Hi, I'm a header.</p>
-      <p>My name is {username}</p>
+    <div className="header">
+      <div className="header__container">
+        <div className="header__logo">
+          <img src={faker.image.image()} alt="kyc" />
+        </div>
+        <div className="header__user">
+          <span>{user.username}</span>
+          <img src={user.image} alt="kyc" />
+          <button onClick={() => handleSignOut()}>GTFO</button>
+        </div>
+      </div>
     </div>
   );
 };

@@ -25,11 +25,11 @@ const INITIAL_STATE: IAuthState = {
 
 export const authReducer = handleActions(
   {
-    [combineActions(signInAction.REQUEST, signOutAction.REQUEST) as any]: (state: IAuthState) => ({
+    [combineActions(signInAction.REQUEST, signOutAction.TRIGGER) as any]: (state: IAuthState) => ({
       ...state,
       isLoadingData: true,
     }),
-    [combineActions(signInAction.REQUEST, signOutAction.REQUEST) as any]: (
+    [combineActions(signInAction.FAILURE, signOutAction.FAILURE) as any]: (
       state: any,
       { payload }: IAction,
     ) => ({
@@ -43,7 +43,7 @@ export const authReducer = handleActions(
       isSignedIn: true,
       hasError: false,
     }),
-    [signOutAction.SUCCESS]: () => ({
+    [signOutAction.FULFILL]: () => ({
       INITIAL_STATE,
     }),
   },

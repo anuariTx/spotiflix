@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import { signInAction, signOutAction } from '@rdx/actions/auth.action';
 import { FakeAuth } from '@auth/fake-auth.auth';
 
@@ -18,10 +18,11 @@ function* signInRequest() {
 
     const userId = uuidv4();
     const userName = faker.name.findName();
+    const image = faker.image.avatar();
 
     yield put(
       signInAction.success({
-        user: { id: userId, username: userName },
+        user: { id: userId, username: userName, image },
       }),
     );
   } catch (error) {
@@ -35,7 +36,7 @@ function* signInRequest() {
 }
 
 export function* signInSaga() {
-  yield takeEvery(signInAction.REQUEST, signInRequest);
+  yield takeLatest(signInAction.REQUEST, signInRequest);
 }
 
 function* signOutService() {
@@ -45,7 +46,7 @@ function* signOutService() {
 function* signOutRequest() {
   try {
     yield call(signOutService);
-    yield put(signOutAction.success());
+    yield put(signOutAction.fulfill());
   } catch (error) {
     yield put(
       signOutAction.failure({
@@ -57,5 +58,5 @@ function* signOutRequest() {
 }
 
 export function* signOutSaga() {
-  yield takeEvery(signOutAction.REQUEST, signOutRequest);
+  yield takeLatest(signOutAction.TRIGGER, signOutRequest);
 }
