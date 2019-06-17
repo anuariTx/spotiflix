@@ -8,7 +8,7 @@ let postService: any;
 
 function* fetchPostService() {
   postService = new AxiosService('https://jsonplaceholder.typicode.com/');
-  const { data }: any = yield postService.get({ endpoint: 'postsasdasd' });
+  const { data }: any = yield postService.get({ endpoint: 'posts' });
 
   return data;
 }
