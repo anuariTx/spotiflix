@@ -13,8 +13,10 @@ const Settings = ({ changeThemeAction }: SettingsProps) => {
 
   return (
     <div>
-      <button onClick={() => handleChangeTheme('lighTheme')}>Light Theme</button>
+      <button onClick={() => handleChangeTheme('lightTheme')}>Light Theme</button>
       <button onClick={() => handleChangeTheme('darkTheme')}>Dark Theme</button>
+      <button onClick={() => handleChangeTheme('prideTheme')}>Pride Theme</button>
+      <button onClick={() => handleChangeTheme('itexicoTheme')}>iTexico Theme</button>
     </div>
   );
 };
