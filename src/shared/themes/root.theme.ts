@@ -1,7 +1,7 @@
 import { PrideTheme } from './pride.theme';
 import { ItexicoTheme } from './itexico.theme';
-import { LightTheme } from '@themes/light.theme';
-import { DarkTheme } from '@themes/dark.theme';
+import { LightTheme } from './light.theme';
+import { DarkTheme } from './dark.theme';
 
 export const configRootTheme = (activeTheme: string) => {
   switch (activeTheme) {
