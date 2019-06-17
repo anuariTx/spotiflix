@@ -2,10 +2,10 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 import { IAppState } from '@rdx/reducers/root.reducer';
-import { UserType } from '@rdx/reducers/auth.reducer';
 
 import { HeaderComponent } from '@shared-components/layout/header/header.component';
 import { signOutAction } from '@rdx/actions/auth.action';
+import { UserType } from '@shared/types/user.type';
 
 type HeaderContainerProps = {
   signOutAction: Function;
@@ -17,7 +17,8 @@ const Header = ({ user, signOutAction }: HeaderContainerProps) => {
     <HeaderComponent
       user={
         user || {
-          username: 'Slim Shady',
+          id: 'abc123',
+          name: 'Slim Shady',
           image: 'https://www.izzi.mx/unity/img/dummy-img/thumbs/myaccount-user-thumb2.png',
         }
       }
@@ -31,7 +32,7 @@ const mapStateToProps = (state: IAppState) => ({
 });
 
 const mapDispatchToProps = {
-  signOutAction: signOutAction.trigger,
+  signOutAction: signOutAction.request,
 };
 
 export const HeaderContainer = connect(

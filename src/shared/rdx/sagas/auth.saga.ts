@@ -5,31 +5,30 @@ import { FakeAuth } from '@auth/fake-auth.auth';
 import uuidv4 from 'uuid/v4';
 import faker from 'faker';
 
-const signIn = async () => await new FakeAuth().signIn();
-const signOut = async () => await new FakeAuth().signOut();
+const authService = new FakeAuth();
 
 function* signInService() {
-  yield call(signIn);
+  yield authService.signIn();
 }
 
 function* signInRequest() {
   try {
     yield call(signInService);
 
-    const userId = uuidv4();
-    const userName = faker.name.findName();
+    const id = uuidv4();
+    const name = faker.name.findName();
     const image = faker.image.avatar();
 
     yield put(
       signInAction.success({
-        user: { id: userId, username: userName, image },
+        user: { id, name, image },
       }),
     );
   } catch (error) {
     yield put(
       signInAction.failure({
         title: 'Error when signing in.',
-        message: 'Ops',
+        message: 'Oops Bobby :C',
       }),
     );
   }
@@ -40,23 +39,27 @@ export function* signInSaga() {
 }
 
 function* signOutService() {
-  yield call(signOut);
+  yield authService.signOut();
 }
 
-function* signOutRequest() {
+function* signOutRequest(params: any) {
   try {
     yield call(signOutService);
-    yield put(signOutAction.fulfill());
+
+    yield put(signOutAction.success());
+
+    const { signOutCleanup } = params.payload;
+    signOutCleanup();
   } catch (error) {
     yield put(
       signOutAction.failure({
         title: 'Error when signing out.',
-        message: 'Ops',
+        message: 'Oops Bobby :C',
       }),
     );
   }
 }
 
 export function* signOutSaga() {
-  yield takeLatest(signOutAction.TRIGGER, signOutRequest);
+  yield takeLatest(signOutAction.REQUEST, signOutRequest);
 }
