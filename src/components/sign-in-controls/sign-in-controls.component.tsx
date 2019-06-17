@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { ILocation } from '@interfaces/location.interface';
 
@@ -11,14 +11,11 @@ export const SignInControlsComponent = ({
   signInAction,
   location,
 }: SignInControlsProps) => {
-  const [redirectToReferrer, setRedirectToReferrer] = useState(false);
   const { referrer } = location.state || { referrer: { pathname: '/app' } };
 
-  const handleSignInClick = () => {
-    signInAction(() => setRedirectToReferrer(true));
-  };
+  const handleSignInClick = () => signInAction();
 
-  if (redirectToReferrer || isSignedIn) {
+  if (isSignedIn) {
     return <Redirect to={referrer} />;
   }
 

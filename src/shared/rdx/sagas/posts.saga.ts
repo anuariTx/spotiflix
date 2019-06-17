@@ -33,11 +33,12 @@ function* fetchPostRequest(params: any) {
     );
   } catch (error) {
     if (!error.wasCancelled) {
+      const errorPayload = { title: 'Error when fetching posts.', message: 'Oops' };
+      yield put(setPostsAction.failure(errorPayload));
       yield put(
         setErrorAction.fulfill({
           containerName: params.payload,
-          title: 'Error when fetching posts.',
-          message: 'Oops',
+          ...errorPayload,
         }),
       );
     }

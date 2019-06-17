@@ -8,15 +8,15 @@ import { signInAction } from '@rdx/actions/auth.action';
 
 import { SignInControlsComponent } from '@components/sign-in-controls/sign-in-controls.component';
 
-type SignInPageProps = { isSignedIn: boolean; signInAction: Function; location: ILocation };
+type SignInPageProps = { isSignedIn: boolean; location: ILocation; signInAction: Function };
 
-const SignInPage = (props: SignInPageProps) => {
+const SignInPage = ({ isSignedIn, location, signInAction }: SignInPageProps) => {
   return (
     <div className="sign-in__page">
       <SignInControlsComponent
-        isSignedIn={props.isSignedIn}
-        signInAction={props.signInAction}
-        location={props.location}
+        isSignedIn={isSignedIn}
+        signInAction={signInAction}
+        location={location}
       />
     </div>
   );
