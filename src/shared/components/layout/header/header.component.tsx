@@ -4,7 +4,6 @@ import { UserType } from '@shared-types/user.type';
 
 import { routerHistory } from '@shared/router.history';
 
-import faker from 'faker';
 import injectSheet from 'react-jss';
 
 import './header.styles.css';
@@ -27,11 +26,14 @@ const Header = ({ user, signOutAction, classes }: HeaderComponentProps) => {
     <div className={`${classes.header}`}>
       <div className="header__container">
         <div className="header__logo">
-          <img src={faker.image.image()} alt="kyc" />
+          <img
+            src="http://www.norrislakemarinas.org/wp-content/themes/norris/img/logo_placeholder.png"
+            alt="logo"
+          />
         </div>
         <div className="header__user">
           <span className={classes.text}>{user.name}</span>
-          <img src={user.image} alt="kyc" />
+          <img src={user.image} alt="user" />
           <button onClick={() => handleSignOutClick()}>GTFO</button>
         </div>
       </div>
