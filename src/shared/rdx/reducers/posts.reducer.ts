@@ -15,20 +15,20 @@ export interface IPostsState {
 }
 
 const INITIAL_STATE: IPostsState = {
-  items: {},
   isLoadingData: false,
   hasError: false,
   postsUnmounted: false,
+  items: {},
 };
 
 export const postsReducer = handleActions(
   {
-    [setPostsAction.REQUEST]: (state: any) => ({
-      ...state,
+    [setPostsAction.REQUEST]: () => ({
+      ...INITIAL_STATE,
       isLoadingData: true,
-      postsUnmounted: false,
     }),
     [setPostsAction.FAILURE]: (state: any, { payload }: IAction) => ({
+      ...state,
       isLoadingData: false,
       hasError: true,
       error: payload,
