@@ -21,6 +21,7 @@
           "@shared-components": "./src/shared/components",
           "@shared-containers": "./src/shared/containers",
           "@themes": "./src/shared/themes",
+          "@shared-types": "./src/shared/types",
           "@utils": "./src/shared/utils"
         }
       }

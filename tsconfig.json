@@ -31,6 +31,7 @@
       "@shared-components/*": ["shared/components/*"],
       "@shared-containers/*": ["shared/containers/*"],
       "@themes/*": ["shared/themes/*"],
+      "@shared-types/*": ["shared/types/*"],
       "@utils/*": ["shared/utils/*"]
     }
   },

@@ -91,9 +91,9 @@ export class AxiosService {
         })
         .catch(error => {
           if (axios.isCancel(error)) {
-            return reject(error);
+            return reject({ wasCancelled: true, error });
           }
-          return reject(error);
+          return reject({ wasCancelled: false, error });
         }),
     );
   };

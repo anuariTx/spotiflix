@@ -20,8 +20,9 @@ const Settings = ({ changeThemeAction }: SettingsProps) => {
 };
 
 const mapStateToProps = (state: IAppState) => ({});
+const mapDispatchToProps = { changeThemeAction: changeThemeAction.trigger };
 
 export const SettingsContainer = connect(
   mapStateToProps,
-  { changeThemeAction },
+  mapDispatchToProps,
 )(Settings);

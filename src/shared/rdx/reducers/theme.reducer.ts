@@ -1,20 +1,27 @@
-import { CHANGE_THEME } from '../action-types';
-
-import { IAction } from '../actions/actions.interfaces';
+import { handleActions } from 'redux-actions';
+import { IAction } from '@interfaces/action.interface';
+import { changeThemeAction } from './../actions/theme.action';
 
 export interface IThemeState {
   activeTheme: string;
+  isLoadingTheme: boolean;
 }
 
 const INITIAL_STATE: IThemeState = {
   activeTheme: 'darkTheme',
+  isLoadingTheme: false,
 };
 
-export const themeReducer = (state = INITIAL_STATE, { type, payload }: IAction) => {
-  switch (type) {
-    case CHANGE_THEME:
-      return { ...state, activeTheme: payload.theme };
-    default:
-      return state;
-  }
-};
+export const themeReducer = handleActions(
+  {
+    [changeThemeAction.TRIGGER]: (state: any) => ({
+      ...state,
+      isLoadingTheme: true,
+    }),
+    [changeThemeAction.FULFILL]: (state: any, { payload }: IAction) => ({
+      activeTheme: payload.theme,
+      isLoadingTheme: false,
+    }),
+  },
+  INITIAL_STATE,
+);

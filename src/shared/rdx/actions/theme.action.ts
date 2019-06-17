@@ -1,6 +1,4 @@
 import { CHANGE_THEME } from '../action-types';
+import { createRoutine } from 'redux-saga-routines';
 
-export const changeThemeAction = (theme: any) => ({
-  type: CHANGE_THEME,
-  payload: { theme },
-});
+export const changeThemeAction = createRoutine(CHANGE_THEME);

@@ -1,8 +1,6 @@
-import { SET_ERROR } from '@rdx/action-types';
+import { createRoutine } from 'redux-saga-routines';
 
-import { ReducerError } from '@rdx/reducers/error.reducer';
+import { SET_ERROR, CLEAR_ERROR } from '@rdx/action-types';
 
-export const setErrorAction = (payload: ReducerError) => ({
-  type: SET_ERROR,
-  payload,
-});
+export const setErrorAction = createRoutine(SET_ERROR);
+export const clearErrorAction = createRoutine(CLEAR_ERROR);

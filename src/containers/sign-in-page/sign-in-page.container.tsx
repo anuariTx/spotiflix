@@ -26,7 +26,11 @@ const mapStateToProps = (state: IAppState) => ({
   isSignedIn: state.auth.isSignedIn,
 });
 
+const mapDispatchToProps = {
+  signInAction: signInAction.request,
+};
+
 export const SignInPageContainer = connect(
   mapStateToProps,
-  { signInAction },
+  mapDispatchToProps,
 )(SignInPage);
