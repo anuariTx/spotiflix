@@ -5,22 +5,32 @@ import { UserType } from '@shared-types/user.type';
 import { routerHistory } from '@shared/router.history';
 
 import faker from 'faker';
+import injectSheet from 'react-jss';
 
 import './header.styles.css';
 
-type HeaderComponentProps = { user: UserType; signOutAction: Function };
+type HeaderComponentProps = { user: UserType; signOutAction: Function; classes: any };
 
-export const HeaderComponent = ({ user, signOutAction }: HeaderComponentProps) => {
+const styles = (theme: any) => ({
+  header: {
+    background: theme.mainBackground,
+  },
+  text: {
+    color: theme.mainText,
+  },
+});
+
+const Header = ({ user, signOutAction, classes }: HeaderComponentProps) => {
   const handleSignOutClick = () => signOutAction({ signOutCleanup: () => routerHistory.push('/') });
 
   return (
-    <div className="header">
+    <div className={`${classes.header}`}>
       <div className="header__container">
         <div className="header__logo">
           <img src={faker.image.image()} alt="kyc" />
         </div>
         <div className="header__user">
-          <span>{user.name}</span>
+          <span className={classes.text}>{user.name}</span>
           <img src={user.image} alt="kyc" />
           <button onClick={() => handleSignOutClick()}>GTFO</button>
         </div>
@@ -28,3 +38,5 @@ export const HeaderComponent = ({ user, signOutAction }: HeaderComponentProps) =
     </div>
   );
 };
+
+export const HeaderComponent = injectSheet(styles)(Header);

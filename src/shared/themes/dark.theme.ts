@@ -1,4 +1,4 @@
 export const DarkTheme = {
-  mainBlack: '#1c1c1c',
-  mainGrey: '#444',
+  mainBackground: '#1c1c1c',
+  mainText: '#fff',
 };
