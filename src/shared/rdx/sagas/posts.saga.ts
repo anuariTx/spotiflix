@@ -7,8 +7,8 @@ import { setErrorAction } from '@rdx/actions/error.action';
 let postService: any;
 
 function* fetchPostService() {
-  postService = new AxiosService('https://jsonplaceholder.typicode.com/a');
-  const { data }: any = yield postService.get({ endpoint: 'posts' });
+  postService = new AxiosService('https://jsonplaceholder.typicode.com/');
+  const { data }: any = yield postService.get({ endpoint: 'postsasdasd' });
 
   return data;
 }
@@ -17,7 +17,7 @@ function* cancelFetchService(params: any) {
   yield postService.cancelRequest(params.payload);
 }
 
-function* fetchPostRequest() {
+function* fetchPostRequest(params: any) {
   try {
     const data = yield call(fetchPostService);
     let payload = {};
@@ -35,14 +35,7 @@ function* fetchPostRequest() {
     if (!error.wasCancelled) {
       yield put(
         setErrorAction.fulfill({
-          containerName: 'sectionPostsContainer',
-          title: 'Error when fetching posts.',
-          message: 'Oops',
-        }),
-      );
-
-      yield put(
-        setPostsAction.failure({
+          containerName: params.payload,
           title: 'Error when fetching posts.',
           message: 'Oops',
         }),
