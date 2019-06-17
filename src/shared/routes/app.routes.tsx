@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { PrivateRouteHOC } from '@hoc/private-route.hoc';
+import { PrivateRouteHOC } from '@routes/private-route.hoc';
 
-import { PrivateAppContainer } from '@containers/private-app.container';
-import { SignInPageContainer } from '@containers/sign-in-page/sign-in-page.container';
+import { PrivateAppContainer } from 'app/private-app.container';
+import { SignInPageContainer } from 'sign-in/sign-in-page.container';
 
 export const AppRoutes = () => (
   <Switch>

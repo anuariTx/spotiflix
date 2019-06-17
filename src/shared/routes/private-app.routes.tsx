@@ -3,9 +3,9 @@ import { IMatch } from '@interfaces/match.interface';
 
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import { DashboardContainer } from '@containers/dashboard/dashboard.container';
-import { SectionContainer } from '@containers/section/section.container';
-import { SettingsContainer } from '@containers/settings/settings.container';
+import { DashboardContainer } from '@dashboard/dashboard.container';
+import { SectionContainer } from '@section/section.container';
+import { SettingsContainer } from '@settings/settings.container';
 
 type PrivateAppProps = {
   match: IMatch;

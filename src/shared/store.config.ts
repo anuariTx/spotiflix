@@ -1,10 +1,10 @@
 import { applyMiddleware, compose, Store } from 'redux';
 
-import { IAppState, RootReducer } from '@rdx/reducers/root.reducer';
+import { IAppState, RootReducer } from '@rdx/root.reducer';
 
 import { createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { rootSaga } from '@rdx/sagas/root.saga';
+import { rootSaga } from '@rdx/root.saga';
 
 // eslint-disable-next-line no-underscore-dangle
 const sagaMiddleware = createSagaMiddleware();
