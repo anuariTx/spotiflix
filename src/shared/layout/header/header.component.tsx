@@ -2,7 +2,7 @@ import React from 'react';
 
 import { UserType } from '@shared-types/user.type';
 
-import { routerHistory } from '../../../shared/router.history';
+import { routerHistory } from '../../router.history';
 
 import injectSheet from 'react-jss';
 
@@ -13,8 +13,6 @@ type HeaderComponentProps = { user: UserType; signOutAction: Function; classes: 
 const styles = (theme: any) => ({
   header: {
     background: theme.mainBackground,
-  },
-  text: {
     color: theme.mainText,
   },
 });
@@ -22,7 +20,6 @@ const styles = (theme: any) => ({
 export const Header = ({ user, signOutAction, classes }: HeaderComponentProps) => {
   const handleSignOutClick = () => signOutAction({ signOutCleanup: () => routerHistory.push('/') });
 
-  console.log(classes.header);
   return (
     <div className={`${classes.header}`}>
       <div className="header__container">
@@ -33,7 +30,7 @@ export const Header = ({ user, signOutAction, classes }: HeaderComponentProps) =
           />
         </div>
         <div className="header__user">
-          <span className={classes.text}>{user.name}</span>
+          <span>{user.name}</span>
           <img src={user.image} alt="user" />
           <button onClick={() => handleSignOutClick()}>GTFO</button>
         </div>

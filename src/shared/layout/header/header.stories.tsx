@@ -4,10 +4,6 @@ import { linkTo } from '@storybook/addon-links';
 
 import { HeaderComponent } from './header.component';
 
-import { DarkTheme } from '../../themes/dark.theme';
-//@ts-ignore
-import { withThemesProvider } from 'storybook-addon-jss-theme';
-
 const headerProps = {
   user: {
     id: '1',
@@ -18,11 +14,4 @@ const headerProps = {
   signOutAction: linkTo('Login', 'Sign In'),
 };
 
-const defaultTheme = {
-  name: 'darkTheme',
-  variables: DarkTheme,
-};
-
-storiesOf('Header', module)
-  .addDecorator(withThemesProvider(defaultTheme))
-  .add('Signed In', () => <HeaderComponent {...headerProps} />);
+storiesOf('Header', module).add('Signed In', () => <HeaderComponent {...headerProps} />);
