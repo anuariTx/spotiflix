@@ -2,7 +2,7 @@ import React from 'react';
 
 import { UserType } from '@shared-types/user.type';
 
-import { routerHistory } from '@shared/router.history';
+import { routerHistory } from '../../../shared/router.history';
 
 import injectSheet from 'react-jss';
 
@@ -19,9 +19,10 @@ const styles = (theme: any) => ({
   },
 });
 
-const Header = ({ user, signOutAction, classes }: HeaderComponentProps) => {
+export const Header = ({ user, signOutAction, classes }: HeaderComponentProps) => {
   const handleSignOutClick = () => signOutAction({ signOutCleanup: () => routerHistory.push('/') });
 
+  console.log(classes.header);
   return (
     <div className={`${classes.header}`}>
       <div className="header__container">

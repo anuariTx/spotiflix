@@ -1,4 +1,4 @@
-import { PostType } from '@shared-types/post.type';
+import { PostType } from '@posts/post.type';
 
 export interface IPosts {
   [key: string]: PostType;

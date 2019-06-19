@@ -1,8 +1,11 @@
 import React from 'react';
 
-import { PostType } from '@shared/types/post.type';
+import { PostType } from '@posts/post.type';
 
 import LazyLoad from 'react-lazyload';
+
+import Skeleton from 'react-skeleton-loader';
+import './post.styles.css';
 
 type PostComponentProps = {
   post: PostType;
@@ -10,6 +13,11 @@ type PostComponentProps = {
 
 export const PostComponent = ({ post }: PostComponentProps) => (
   <LazyLoad>
-    <li>{post.title}</li>
+    <li>
+      <div className="post">
+        <h4 className="post__title">{post.title || <Skeleton />}</h4>
+        <p className="post__body">{post.body || <Skeleton width="100%" count={4} />}</p>
+      </div>
+    </li>
   </LazyLoad>
 );

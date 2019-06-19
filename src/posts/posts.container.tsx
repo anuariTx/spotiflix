@@ -2,12 +2,14 @@ import React, { useEffect, Suspense, lazy } from 'react';
 
 import { IAppState } from '@rdx/root.reducer';
 import { IPosts } from 'posts/post.interface';
-import { PostType } from '@shared/types/post.type';
+import { PostType } from '@posts/post.type';
 
 import { connect } from 'react-redux';
 import { setPostsAction } from 'posts/posts.action';
 import { clearErrorAction } from 'error/error.action';
 import { IErrorState } from 'error/error.reducer';
+
+import './post.styles.css';
 
 const PostComponent = lazy(() => import('posts/post.lazy'));
 
@@ -41,15 +43,15 @@ const Posts = ({
 
   const renderPosts = items.map((post: PostType) => {
     return (
-      <Suspense fallback={<li>Loading post....</li>} key={post.id}>
+      <Suspense fallback={<div></div>} key={post.id}>
         <PostComponent post={post} />
       </Suspense>
     );
   });
 
   return (
-    <div>
-      <ul>{renderPosts}</ul>
+    <div className="container">
+      <ul className="post__list">{renderPosts}</ul>
     </div>
   );
 };

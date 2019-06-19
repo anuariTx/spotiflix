@@ -10,7 +10,7 @@ type NavigationMenuComponentProps = {
 
 export const NavigationMenuComponent = ({ match }: NavigationMenuComponentProps) => {
   return (
-    <nav className="container">
+    <nav>
       <ul>
         <li>
           <Link to={`${match.url}`}>Dashboard</Link>

@@ -68,6 +68,7 @@
     "react-lazyload": "^2.6.1",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.1",
+    "react-skeleton-loader": "^1.0.4",
     "redux": "^4.0.1",
     "redux-actions": "^2.6.5",
     "redux-saga": "^1.0.3",
@@ -93,7 +94,8 @@
     "lint": "eslint --ext .tsx,.ts src",
     "test-no-watch": "node scripts/test.js --watchAll=false",
     "postmerge": "npm install",
-    "postrewrite": "npm install"
+    "postrewrite": "npm install",
+    "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -111,10 +113,30 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-a11y": "^5.1.8",
+    "@storybook/addon-actions": "^5.1.8",
+    "@storybook/addon-console": "^1.1.0",
+    "@storybook/addon-info": "^5.1.8",
+    "@storybook/addon-knobs": "^5.1.8",
+    "@storybook/addon-links": "^5.1.8",
+    "@storybook/addon-storyshots": "^5.1.8",
+    "@storybook/addon-viewport": "^5.1.8",
+    "@storybook/react": "^5.1.8",
+    "@types/storybook__addon-knobs": "^5.0.1",
+    "@types/storybook__addon-viewport": "^4.1.1",
+    "@types/storybook__react": "^4.0.2",
+    "awesome-typescript-loader": "^5.2.1",
     "babel-plugin-module-resolver": "^3.2.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "faker": "^4.1.0",
     "husky": "^2.4.0",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "react-docgen-typescript-loader": "^3.1.0",
+    "react-docgen-typescript-webpack-plugin": "^1.1.0",
+    "react-test-renderer": "^16.8.6",
+    "require-context.macro": "^1.0.4",
+    "storybook-addon-jss-theme": "^1.0.2"
   },
   "jest": {
     "collectCoverageFrom": [
