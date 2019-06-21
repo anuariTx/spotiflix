@@ -2,7 +2,7 @@ import React from 'react';
 
 import { UserType } from '@shared-types/user.type';
 
-import { routerHistory } from '../../router.history';
+import { routerHistory } from '@shared/router.history';
 
 import injectSheet from 'react-jss';
 
