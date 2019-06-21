@@ -2,13 +2,17 @@ import React from 'react';
 
 import { UserType } from '@shared-types/user.type';
 
-import { routerHistory } from '@shared/router.history';
+import { RouteComponentProps, withRouter } from 'react-router';
 
 import injectSheet from 'react-jss';
 
 import './header.styles.css';
 
-type HeaderComponentProps = { user: UserType; signOutAction: Function; classes: any };
+interface HeaderComponentProps extends RouteComponentProps {
+  user: UserType;
+  signOutAction: Function;
+  classes: any;
+}
 
 const styles = (theme: any) => ({
   header: {
@@ -17,8 +21,8 @@ const styles = (theme: any) => ({
   },
 });
 
-export const Header = ({ user, signOutAction, classes }: HeaderComponentProps) => {
-  const handleSignOutClick = () => signOutAction({ signOutCleanup: () => routerHistory.push('/') });
+export const Header = ({ user, signOutAction, classes, history }: HeaderComponentProps) => {
+  const handleSignOutClick = () => signOutAction({ signOutCleanup: () => history.push('/') });
 
   return (
     <div className={`${classes.header}`}>
@@ -32,11 +36,13 @@ export const Header = ({ user, signOutAction, classes }: HeaderComponentProps) =
         <div className="header__user">
           <span>{user.name}</span>
           <img src={user.image} alt="user" />
-          <button onClick={() => handleSignOutClick()}>GTFO</button>
+          <button onClick={handleSignOutClick}>GTFO</button>
         </div>
       </div>
     </div>
   );
 };
 
-export const HeaderComponent = injectSheet(styles)(Header);
+const StyledHeader = injectSheet(styles)(Header);
+
+export const HeaderComponent = withRouter(StyledHeader);

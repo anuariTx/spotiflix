@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Router } from 'react-router-dom';
-import { routerHistory } from '@shared/router.history';
+import { routerHistory } from '@routes/router.history';
 import { AppRoutes } from '@routes/app.routes';
 
 import { connect } from 'react-redux';

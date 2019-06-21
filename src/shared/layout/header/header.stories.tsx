@@ -1,4 +1,7 @@
 import React from 'react';
+
+import { MemoryRouter } from 'react-router';
+
 import { storiesOf } from '@storybook/react';
 import { linkTo } from '@storybook/addon-links';
 
@@ -14,4 +17,6 @@ const headerProps = {
   signOutAction: linkTo('Login', 'Sign In'),
 };
 
-storiesOf('Header', module).add('Signed In', () => <HeaderComponent {...headerProps} />);
+storiesOf('Header', module)
+  .addDecorator(story => <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>)
+  .add('Signed In', () => <HeaderComponent {...headerProps} />);
