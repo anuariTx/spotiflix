@@ -1,12 +1,12 @@
-export interface ILocation {
+export interface LocationInterface {
   key: string;
   pathname: string;
   search: string;
   hash: string;
-  state: ILocationState;
+  state: LocationStateInterface;
 }
 
-export interface ILocationState {
+export interface LocationStateInterface {
   referrer: {
     pathname: string;
   };

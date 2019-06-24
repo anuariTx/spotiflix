@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { IMatch } from '@interfaces/match.interface';
+import { MatchInterface } from '@interfaces/match.interface';
 
 import { Link } from 'react-router-dom';
 
 type NavigationMenuComponentProps = {
-  match: IMatch;
+  match: MatchInterface;
 };
 
 export const NavigationMenuComponent = ({ match }: NavigationMenuComponentProps) => {

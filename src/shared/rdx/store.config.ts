@@ -1,6 +1,6 @@
 import { applyMiddleware, compose, Store } from 'redux';
 
-import { IAppState, RootReducer } from './root.reducer';
+import { AppStateInterface, RootReducer } from './root.reducer';
 
 import { createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
@@ -10,7 +10,7 @@ import { rootSaga } from './root.saga';
 const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const configuredStore: Store<IAppState> = createStore(
+const configuredStore: Store<AppStateInterface> = createStore(
   RootReducer,
   composeEnhancers(applyMiddleware(sagaMiddleware)),
 );

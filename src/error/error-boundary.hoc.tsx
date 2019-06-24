@@ -3,14 +3,14 @@ import React from 'react';
 import { RenderReturn } from '@shared/types/render.type';
 
 import { connect } from 'react-redux';
-import { IAppState } from '@rdx/root.reducer';
-import { IErrorState } from 'error/error.reducer';
+import { AppStateInterface } from '@rdx/root.reducer';
+import { ErrorStateInterface } from 'error/error.reducer';
 
 type ErrorBoundaryProps = {
   children: RenderReturn;
   fallback: RenderReturn;
   containerName: string;
-  errors: IErrorState;
+  errors: ErrorStateInterface;
 };
 
 type ErrorBoundaryState = {};
@@ -37,7 +37,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
   }
 }
 
-const mapStateToProps = (state: IAppState) => ({
+const mapStateToProps = (state: AppStateInterface) => ({
   errors: state.error,
 });
 

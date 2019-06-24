@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { IAppState } from '@rdx/root.reducer';
+import { AppStateInterface } from '@rdx/root.reducer';
 
 import { HeaderComponent } from '@layout/header/header.component';
 import { signOutAction } from '@auth/auth.action';
@@ -27,7 +27,7 @@ const Header = ({ user, signOutAction }: HeaderContainerProps) => {
   );
 };
 
-const mapStateToProps = (state: IAppState) => ({
+const mapStateToProps = (state: AppStateInterface) => ({
   user: state.auth.user,
 });
 

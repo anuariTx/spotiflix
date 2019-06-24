@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { IAppState } from '@rdx/root.reducer';
-import { ILocation } from '@interfaces/location.interface';
+import { AppStateInterface } from '@rdx/root.reducer';
+import { LocationInterface } from '@interfaces/location.interface';
 import { PrivateAppProps } from 'app/private-app.container';
 
 import { Route, Redirect } from 'react-router-dom';
@@ -13,7 +13,7 @@ type PrivateRouteProps = {
   Component: React.ComponentType<PrivateAppProps>;
   isSignedIn: boolean;
   strict: boolean;
-  location?: ILocation;
+  location?: LocationInterface;
 };
 
 const PrivateRoute = ({ Component, isSignedIn, location, ...rest }: PrivateRouteProps) => {
@@ -31,7 +31,7 @@ const PrivateRoute = ({ Component, isSignedIn, location, ...rest }: PrivateRoute
   );
 };
 
-const mapStateToProps = (state: IAppState) => ({
+const mapStateToProps = (state: AppStateInterface) => ({
   isSignedIn: state.auth.isSignedIn,
 });
 
