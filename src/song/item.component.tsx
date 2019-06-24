@@ -32,6 +32,10 @@ const songItemStyles = (theme: ThemeProvider) => ({
       cursor: 'pointer',
     },
   },
+  song__btnPlay: {
+    marginRight: '20px',
+    color: '#979797',
+  },
 });
 
 interface SongItemInterface {
@@ -42,7 +46,10 @@ interface SongItemInterface {
 const SongItem = ({ song, classes }: SongItemInterface) => (
   <tr className={classes.song}>
     <td className={classNames(classes.song__title, classes.song__cell)}>
-      <span>{song.name}</span>
+      <span>
+        <i className={classNames('fas fa-play-circle', classes.song__btnPlay)} />
+        {song.name}
+      </span>
     </td>
     <td className={classNames(classes.song__artist, classes.song__cell)}>
       <span>{song.artists[0].name}</span>
