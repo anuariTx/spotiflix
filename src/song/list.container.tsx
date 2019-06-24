@@ -39,13 +39,16 @@ const songListStyles = {
 interface SongListProps {
   songs: SongType[];
   fetchSongsAction: Function;
+  cancelFetchSongsAction: Function;
   classes?: any;
 }
 
-const SongList = ({ songs, fetchSongsAction, classes }: SongListProps) => {
+const SongList = ({ songs, fetchSongsAction, cancelFetchSongsAction, classes }: SongListProps) => {
   useEffect(() => {
     fetchSongsAction();
-  }, [fetchSongsAction]);
+
+    return () => cancelFetchSongsAction('Cancel song list fetching');
+  }, [cancelFetchSongsAction, fetchSongsAction]);
 
   const renderSongs = (songs: SongType[]) => {
     return songs.map((song: any, index: number) => <SongItemComponent key={index} song={song} />);
@@ -102,6 +105,7 @@ const mapStateToProps = ({ songs }: IAppState) => ({
 
 const mapDispatchToProps = {
   fetchSongsAction: fetchSongListAction.request,
+  cancelFetchSongsAction: fetchSongListAction.fulfill,
 };
 
 export const SongListStyled = injectSheet(songListStyles)(SongList);

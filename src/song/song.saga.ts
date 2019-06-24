@@ -21,6 +21,10 @@ function* fetchSongListService() {
   return data.items;
 }
 
+function* cancelFetchService(params: any) {
+  yield songsService.cancelRequest(params.payload);
+}
+
 function* fetchSongListRequest() {
   try {
     const data = yield call(fetchSongListService);
@@ -28,10 +32,14 @@ function* fetchSongListRequest() {
 
     yield put(fetchSongListAction.success({ songs }));
   } catch (error) {
-    yield put(fetchSongListAction.failure({ error }));
+    console.log(error);
+    if (!error.wasCancelled) {
+      yield put(fetchSongListAction.failure({ error }));
+    }
   }
 }
 
 export function* fetchSongListSaga() {
   yield takeLatest(fetchSongListAction.REQUEST, fetchSongListRequest);
+  yield takeLatest(fetchSongListAction.FULFILL, cancelFetchService);
 }

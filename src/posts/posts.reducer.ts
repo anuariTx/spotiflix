@@ -6,7 +6,7 @@ import { handleActions } from 'redux-actions';
 import { setPostsAction } from '@posts/posts.action';
 import { IPosts } from '@posts/post.interface';
 
-export interface IPostsState {
+export interface PostsStateInterface {
   items: IPosts;
   isLoadingData: boolean;
   hasError: boolean;
@@ -14,7 +14,7 @@ export interface IPostsState {
   error?: ErrorType;
 }
 
-const INITIAL_STATE: IPostsState = {
+const INITIAL_STATE: PostsStateInterface = {
   isLoadingData: false,
   hasError: false,
   postsUnmounted: false,

@@ -2,23 +2,23 @@ import { handleActions } from 'redux-actions';
 import { ActionInterface } from '@interfaces/action.interface';
 import { changeThemeAction } from '@themes/theme.action';
 
-export interface IThemeState {
+export interface ThemeStateInterface {
   activeTheme: string;
   isLoadingTheme: boolean;
 }
 
-const INITIAL_STATE: IThemeState = {
+const INITIAL_STATE: ThemeStateInterface = {
   activeTheme: 'darkTheme',
   isLoadingTheme: false,
 };
 
 export const themeReducer = handleActions(
   {
-    [changeThemeAction.TRIGGER]: (state: any) => ({
+    [changeThemeAction.TRIGGER]: (state: ThemeStateInterface) => ({
       ...state,
       isLoadingTheme: true,
     }),
-    [changeThemeAction.FULFILL]: (state: any, { payload }: ActionInterface) => ({
+    [changeThemeAction.FULFILL]: (state: ThemeStateInterface, { payload }: ActionInterface) => ({
       activeTheme: payload.theme,
       isLoadingTheme: false,
     }),

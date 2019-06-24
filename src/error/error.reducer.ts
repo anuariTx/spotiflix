@@ -7,19 +7,19 @@ export type ReducerError = null | {
   error: Error;
 };
 
-export interface IErrorState {
+export interface ErrorStateInterface {
   [key: string]: ReducerError;
 }
 
-const INITIAL_STATE: IErrorState = {};
+const INITIAL_STATE: ErrorStateInterface = {};
 
 export const errorReducer = handleActions(
   {
-    [setErrorAction.FULFILL]: (state: IErrorState, { payload }: ActionInterface) => ({
+    [setErrorAction.FULFILL]: (state: ErrorStateInterface, { payload }: ActionInterface) => ({
       ...state,
       [payload.containerName]: payload,
     }),
-    [clearErrorAction.FULFILL]: (state: IErrorState, { payload }: ActionInterface) => ({
+    [clearErrorAction.FULFILL]: (state: ErrorStateInterface, { payload }: ActionInterface) => ({
       ...state,
       [payload.containerName]: undefined,
     }),

@@ -1,16 +1,16 @@
 import { combineReducers } from 'redux';
 
-import { IAuthState, authReducer } from '@auth/auth.reducer';
-import { IThemeState, themeReducer } from '@themes/theme.reducer';
-import { IErrorState, errorReducer } from '@error/error.reducer';
-import { IPostsState, postsReducer } from '@posts/posts.reducer';
+import { AuthStateInterface, authReducer } from '@auth/auth.reducer';
+import { ThemeStateInterface, themeReducer } from '@themes/theme.reducer';
+import { ErrorStateInterface, errorReducer } from '@error/error.reducer';
+import { PostsStateInterface, postsReducer } from '@posts/posts.reducer';
 import { SongsStateInterface, songsReducer } from '@song/song.reducer';
 
 export interface IAppState {
-  auth: IAuthState;
-  theme: IThemeState;
-  error: IErrorState;
-  posts: IPostsState;
+  auth: AuthStateInterface;
+  theme: ThemeStateInterface;
+  error: ErrorStateInterface;
+  posts: PostsStateInterface;
   songs: SongsStateInterface;
 }
 
