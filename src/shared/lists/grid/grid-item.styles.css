@@ -36,3 +36,8 @@
 .grid-item__subtitle {
   text-transform: capitalize;
 }
+
+.grid-item--loading {
+  width: 200px;
+  text-align: center;
+}

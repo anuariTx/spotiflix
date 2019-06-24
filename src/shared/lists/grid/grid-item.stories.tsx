@@ -3,6 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { GridItemComponent } from './grid-item.component';
+import { GridItemLoadingComponent } from './grid-item.loading';
 
 const albumItem = {
   title: "She's So Unusual",
@@ -20,4 +21,6 @@ const artistItem = {
 storiesOf('Grid Item', module)
   .addDecorator(story => <div style={{ fontFamily: 'Lato, sans-serif' }}>{story()}</div>)
   .add('Album Item', () => <GridItemComponent {...albumItem} />)
-  .add('Artist Item', () => <GridItemComponent {...artistItem} />);
+  .add('Artist Item', () => <GridItemComponent {...artistItem} />)
+  .add('Loading Album', () => <GridItemLoadingComponent />)
+  .add('Loading Artist', () => <GridItemLoadingComponent isRounded={true} />);
