@@ -30,7 +30,7 @@ export const GridItem = ({ title, subtitle, imageURL, isRounded, classes }: Grid
         alt={title}
       />
       <div className="grid-item__title">{title}</div>
-      <div className="grid-item__subtitle">{subtitle}</div>
+      {subtitle && <div className="grid-item__subtitle">{subtitle}</div>}
     </div>
   </LazyLoad>
 );

@@ -11,6 +11,13 @@ const albumItem = {
   isRounded: false,
 };
 
+const artistItem = {
+  title: 'Band of Horses',
+  imageURL: 'https://i.scdn.co/image/2f91c3cace3c5a6a48f3d0e2fd21364d4911b332',
+  isRounded: true,
+};
+
 storiesOf('Grid Item', module)
   .addDecorator(story => <div style={{ fontFamily: 'Lato, sans-serif' }}>{story()}</div>)
-  .add('Album Item', () => <GridItemComponent {...albumItem} />);
+  .add('Album Item', () => <GridItemComponent {...albumItem} />)
+  .add('Artist Item', () => <GridItemComponent {...artistItem} />);

@@ -25,10 +25,10 @@
 .grid-item__title {
   font-weight: 700;
   margin-top: 8px;
-  margin-bottom: 2px;
 }
 
 .grid-item__subtitle {
+  margin-top: 2px;
   font-weight: 300;
 }
 
