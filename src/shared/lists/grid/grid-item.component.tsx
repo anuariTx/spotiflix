@@ -11,7 +11,7 @@ export interface GridItemInterface {
   subtitle?: string;
   imageURL: string;
   isRounded: boolean;
-  classes: any;
+  classes: { gridItem: string };
 }
 
 const styles = (theme: any) => ({

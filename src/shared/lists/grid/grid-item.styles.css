@@ -1,8 +1,9 @@
 .grid-item {
   width: 200px;
-  max-height: 250px;
+  max-height: 300px;
   text-align: center;
   margin: 10px;
+  padding-bottom: 6px;
 }
 
 .grid-item__image {
@@ -14,16 +15,21 @@
   border-radius: 50%;
 }
 
-.grid-item__title {
-  font-size: 14px;
+.grid-item__title,
+.grid-item__subtitle {
+  font-size: 13px;
   line-height: 20px;
-  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+.grid-item__title {
+  font-weight: 700;
+  margin-top: 8px;
+  margin-bottom: 2px;
 }
 
 .grid-item__subtitle {
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: normal;
+  font-weight: 300;
 }
 
 .grid-item__title,
