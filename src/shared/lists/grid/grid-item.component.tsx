@@ -11,7 +11,7 @@ export interface GridItemInterface {
   subtitle?: string;
   imageURL: string;
   isRounded: boolean;
-  classes: any;
+  classes: { gridItem: string };
 }
 
 const styles = (theme: any) => ({
@@ -30,7 +30,7 @@ export const GridItem = ({ title, subtitle, imageURL, isRounded, classes }: Grid
         alt={title}
       />
       <div className="grid-item__title">{title}</div>
-      <div className="grid-item__subtitle">{subtitle}</div>
+      {subtitle && <div className="grid-item__subtitle">{subtitle}</div>}
     </div>
   </LazyLoad>
 );
