@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { IAppState } from '@shared/rdx/root.reducer';
+import { AppStateInterface } from '@shared/rdx/root.reducer';
 
 import { SongItemComponent, SongItemUnloadedComponent } from './item.component';
 
@@ -99,7 +99,7 @@ const SongListUnloaded = ({ classes }: any) => {
   );
 };
 
-const mapStateToProps = ({ songs }: IAppState) => ({
+const mapStateToProps = ({ songs }: AppStateInterface) => ({
   songs: songs.items,
 });
 

@@ -2,13 +2,13 @@ import React from 'react';
 
 import { PrivateAppRoutes } from '@routes/private-app.routes';
 
-import { IMatch } from '@interfaces/match.interface';
+import { MatchInterface } from '@interfaces/match.interface';
 
 import { HeaderContainer } from '@shared/layout/header/header.container';
 import { NavigationMenuContainer } from '@shared/layout/navigation-menu/navigation-menu.container';
 
 export type PrivateAppProps = {
-  match: IMatch;
+  match: MatchInterface;
 };
 
 export const PrivateAppContainer = ({ match }: PrivateAppProps) => (

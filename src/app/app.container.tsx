@@ -5,7 +5,7 @@ import { routerHistory } from '@routes/router.history';
 import { AppRoutes } from '@routes/app.routes';
 
 import { connect } from 'react-redux';
-import { IAppState } from '@rdx/root.reducer';
+import { AppStateInterface } from '@rdx/root.reducer';
 
 import { ThemeProvider } from 'react-jss';
 import { configRootTheme } from '@themes/root.theme';
@@ -26,7 +26,7 @@ const App = ({ theme }: AppProps) => {
   );
 };
 
-const mapStateToProps = (state: IAppState) => ({
+const mapStateToProps = (state: AppStateInterface) => ({
   theme: state.theme.activeTheme,
 });
 

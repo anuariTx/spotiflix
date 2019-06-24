@@ -1,10 +1,14 @@
 import React from 'react';
 
-import { ILocation } from '@interfaces/location.interface';
+import { LocationInterface } from '@interfaces/location.interface';
 
 import { Redirect } from 'react-router';
 
-type SignInControlsProps = { isSignedIn: boolean; signInAction: Function; location: ILocation };
+type SignInControlsProps = {
+  isSignedIn: boolean;
+  signInAction: Function;
+  location: LocationInterface;
+};
 
 export const SignInControlsComponent = ({
   isSignedIn,

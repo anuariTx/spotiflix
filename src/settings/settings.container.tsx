@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { IAppState } from '@rdx/root.reducer';
+import { AppStateInterface } from '@rdx/root.reducer';
 import { changeThemeAction } from '@shared/themes/theme.action';
 
 type SettingsProps = {
@@ -21,7 +21,7 @@ const Settings = ({ changeThemeAction }: SettingsProps) => {
   );
 };
 
-const mapStateToProps = (state: IAppState) => ({});
+const mapStateToProps = (state: AppStateInterface) => ({});
 const mapDispatchToProps = { changeThemeAction: changeThemeAction.trigger };
 
 export const SettingsContainer = connect(

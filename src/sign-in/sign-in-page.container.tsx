@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { ILocation } from '@interfaces/location.interface';
-import { IAppState } from '@rdx/root.reducer';
+import { LocationInterface } from '@interfaces/location.interface';
+import { AppStateInterface } from '@rdx/root.reducer';
 
 import { connect } from 'react-redux';
 import { signInAction } from '@auth/auth.action';
 
 import { SignInControlsComponent } from 'sign-in/sign-in-controls.component';
 
-type SignInPageProps = { isSignedIn: boolean; location: ILocation; signInAction: Function };
+type SignInPageProps = { isSignedIn: boolean; location: LocationInterface; signInAction: Function };
 
 const SignInPage = ({ isSignedIn, location, signInAction }: SignInPageProps) => {
   return (
@@ -22,7 +22,7 @@ const SignInPage = ({ isSignedIn, location, signInAction }: SignInPageProps) => 
   );
 };
 
-const mapStateToProps = (state: IAppState) => ({
+const mapStateToProps = (state: AppStateInterface) => ({
   isSignedIn: state.auth.isSignedIn,
 });
 
