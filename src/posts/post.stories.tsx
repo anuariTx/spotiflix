@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { PostType } from '@posts/post.type';
+import { PostType } from './post.type';
 
 import { PostComponent } from './post.component';
 

@@ -1,0 +1,33 @@
+.grid-item {
+  width: 200px;
+  max-height: 250px;
+  text-align: center;
+  margin: 10px;
+  font-family: 'Lato', sans-serif;
+}
+
+.grid-item__image {
+  width: 200px;
+  height: 200px;
+}
+
+.grid-item__image--rounded {
+  border-radius: 50%;
+}
+
+.grid-item__title {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: bold;
+}
+
+.grid-item__subtitle {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: normal;
+}
+
+.grid-item__title,
+.grid-item__subtitle {
+  text-transform: capitalize;
+}
