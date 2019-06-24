@@ -6,7 +6,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { DashboardContainer } from '@dashboard/dashboard.container';
 import { SectionContainer } from '@section/section.container';
 import { SettingsContainer } from '@settings/settings.container';
-import { SongListComponent } from '@song/list.component';
+import { SongListComponent } from '@song/list.container';
 
 type PrivateAppProps = {
   match: IMatch;

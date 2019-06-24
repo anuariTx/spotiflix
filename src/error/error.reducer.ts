@@ -1,6 +1,6 @@
-import { IAction } from '@interfaces/action.interface';
+import { ActionInterface } from '@interfaces/action.interface';
 import { handleActions } from 'redux-actions';
-import { setErrorAction, clearErrorAction } from 'error/error.action';
+import { setErrorAction, clearErrorAction } from '@error/error.action';
 
 export type ReducerError = null | {
   containerName: string;
@@ -15,11 +15,11 @@ const INITIAL_STATE: IErrorState = {};
 
 export const errorReducer = handleActions(
   {
-    [setErrorAction.FULFILL]: (state: IErrorState, { payload }: IAction) => ({
+    [setErrorAction.FULFILL]: (state: IErrorState, { payload }: ActionInterface) => ({
       ...state,
       [payload.containerName]: payload,
     }),
-    [clearErrorAction.FULFILL]: (state: IErrorState, { payload }: IAction) => ({
+    [clearErrorAction.FULFILL]: (state: IErrorState, { payload }: ActionInterface) => ({
       ...state,
       [payload.containerName]: undefined,
     }),

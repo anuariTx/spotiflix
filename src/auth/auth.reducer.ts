@@ -1,4 +1,4 @@
-import { IAction } from '@interfaces/action.interface';
+import { ActionInterface } from '@interfaces/action.interface';
 import { UserType } from '@shared/types/user.type';
 import { ErrorType } from '@shared/types/error.type';
 
@@ -28,14 +28,14 @@ export const authReducer = handleActions(
     }),
     [combineActions(signInAction.FAILURE, signOutAction.FAILURE) as any]: (
       state: any,
-      { payload }: IAction,
+      { payload }: ActionInterface,
     ) => ({
       ...state,
       isLoadingData: false,
       hasError: true,
       error: { ...payload },
     }),
-    [signInAction.SUCCESS]: (state: IAuthState, { payload }: IAction) => ({
+    [signInAction.SUCCESS]: (state: IAuthState, { payload }: ActionInterface) => ({
       ...state,
       isLoadingData: false,
       isSignedIn: true,
