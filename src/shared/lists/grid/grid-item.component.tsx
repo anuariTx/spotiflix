@@ -2,6 +2,8 @@ import React from 'react';
 
 import LazyLoad from 'react-lazyload';
 
+import injectSheet from 'react-jss';
+
 import './grid-item.styles.css';
 
 export interface GridItemInterface {
@@ -9,11 +11,19 @@ export interface GridItemInterface {
   subtitle?: string;
   imageURL: string;
   isRounded: boolean;
+  classes: any;
 }
 
-export const GridItemComponent = ({ title, subtitle, imageURL, isRounded }: GridItemInterface) => (
+const styles = (theme: any) => ({
+  gridItem: {
+    background: theme.mainBackground,
+    color: theme.mainText,
+  },
+});
+
+export const GridItem = ({ title, subtitle, imageURL, isRounded, classes }: GridItemInterface) => (
   <LazyLoad>
-    <div className="grid-item">
+    <div className={`grid-item ${classes.gridItem}`}>
       <img
         className={`grid-item__image ${isRounded && 'grid-item__image--rounded'}`}
         src={imageURL}
@@ -25,8 +35,10 @@ export const GridItemComponent = ({ title, subtitle, imageURL, isRounded }: Grid
   </LazyLoad>
 );
 
-GridItemComponent.defaultProps = {
+GridItem.defaultProps = {
   subtitle: '',
   imageURL: 'https://via.placeholder.com/200',
   isRounded: false,
 };
+
+export const GridItemComponent = injectSheet(styles)(GridItem);
