@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 
 import { GridItemComponent } from './grid-item.component';
 import { GridItemLoadingComponent } from './grid-item.loading';
+import { GridItemErrorComponent } from './grid-item.error';
 
 const albumItem = {
   title: "She's So Unusual",
@@ -23,4 +24,5 @@ storiesOf('Grid Item', module)
   .add('Album Item', () => <GridItemComponent {...albumItem} />)
   .add('Artist Item', () => <GridItemComponent {...artistItem} />)
   .add('Loading Album', () => <GridItemLoadingComponent />)
-  .add('Loading Artist', () => <GridItemLoadingComponent isRounded={true} />);
+  .add('Loading Artist', () => <GridItemLoadingComponent isRounded={true} />)
+  .add('Error', () => <GridItemErrorComponent />);

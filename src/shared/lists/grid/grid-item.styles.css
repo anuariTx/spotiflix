@@ -40,4 +40,27 @@
 .grid-item--loading {
   width: 200px;
   text-align: center;
+  margin: 10px;
+}
+
+.grid-item--error {
+  width: 200px;
+  max-height: 300px;
+  text-align: center;
+  margin: 10px;
+}
+
+.grid-item--error__icon {
+  background: #eff1f6;
+  color: white;
+  font-size: 24px;
+  padding: 15px;
+}
+
+.grid-item--error__message {
+  font-size: 13px;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  margin-top: 8px;
 }

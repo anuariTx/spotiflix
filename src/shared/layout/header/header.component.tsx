@@ -11,7 +11,7 @@ import './header.styles.css';
 interface HeaderComponentProps extends RouteComponentProps {
   user: UserType;
   signOutAction: Function;
-  classes: any;
+  classes: { header: string };
 }
 
 const styles = (theme: any) => ({
