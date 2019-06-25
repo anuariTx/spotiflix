@@ -1,7 +1,7 @@
 import { takeEvery, put } from 'redux-saga/effects';
 import { setErrorAction, clearErrorAction } from 'error/error.action';
 
-function* setErrorRequest(params: any) {
+function* setErrorTrigger(params: any) {
   yield put(
     setErrorAction.fulfill({
       ...params.payload,
@@ -10,13 +10,17 @@ function* setErrorRequest(params: any) {
 }
 
 export function* setErrorSaga() {
-  yield takeEvery(setErrorAction.FULFILL, setErrorRequest);
+  yield takeEvery(setErrorAction.TRIGGER, setErrorTrigger);
 }
 
-function* clearErrorRequest(params: any) {
-  yield put(clearErrorAction.fulfill({ containerName: params.payload }));
+function* clearErrorTrigger(params: any) {
+  yield put(
+    clearErrorAction.fulfill({
+      containerName: params.payload,
+    }),
+  );
 }
 
 export function* clearErrorSaga() {
-  yield takeEvery(clearErrorAction.FULFILL, clearErrorRequest);
+  yield takeEvery(clearErrorAction.TRIGGER, clearErrorTrigger);
 }

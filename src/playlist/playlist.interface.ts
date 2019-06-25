@@ -1,4 +1,4 @@
-import { SongInterface } from '../song/song.interface';
+import { SongInterface } from '@song/song.interface';
 
 export interface PlaylistInterface {
   title: string;

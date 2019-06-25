@@ -2,7 +2,7 @@ import { ActionInterface } from '@interfaces/action.interface';
 import { handleActions } from 'redux-actions';
 import { setErrorAction, clearErrorAction } from '@error/error.action';
 
-export type ReducerError = null | {
+export type ReducerError = {
   containerName: string;
   error: Error;
 };
