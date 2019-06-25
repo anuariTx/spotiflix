@@ -48,7 +48,7 @@ function* fetchAlbumRequest(params: any) {
     if (!error.wasCancelled) {
       const errorPayload = {
         id: albumId,
-        error: { title: 'Error when fetching posts.', message: 'Oops' },
+        error: { title: `Error when fetching album: ${albumId}`, message: 'Oops' },
       };
 
       yield put(fetchAlbumAction.failure(errorPayload));
