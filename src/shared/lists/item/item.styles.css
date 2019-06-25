@@ -1,4 +1,4 @@
-.grid-item {
+.item {
   width: 200px;
   max-height: 300px;
   text-align: center;
@@ -6,58 +6,58 @@
   padding-bottom: 6px;
 }
 
-.grid-item__image {
+.item__image {
   width: 200px;
   height: 200px;
 }
 
-.grid-item__image--rounded {
+.item__image--rounded {
   border-radius: 50%;
 }
 
-.grid-item__title,
-.grid-item__subtitle {
+.item__title,
+.item__subtitle {
   font-size: 13px;
   line-height: 20px;
   letter-spacing: 0.05em;
 }
 
-.grid-item__title {
+.item__title {
   font-weight: 700;
   margin-top: 8px;
 }
 
-.grid-item__subtitle {
+.item__subtitle {
   margin-top: 2px;
   font-weight: 300;
 }
 
-.grid-item__title,
-.grid-item__subtitle {
+.item__title,
+.item__subtitle {
   text-transform: capitalize;
 }
 
-.grid-item--loading {
+.item--loading {
   width: 200px;
   text-align: center;
   margin: 10px;
 }
 
-.grid-item--error {
+.item--error {
   width: 200px;
   max-height: 300px;
   text-align: center;
   margin: 10px;
 }
 
-.grid-item--error__icon {
+.item--error__icon {
   background: #eff1f6;
   color: white;
   font-size: 24px;
   padding: 15px;
 }
 
-.grid-item--error__message {
+.item--error__message {
   font-size: 13px;
   line-height: 20px;
   letter-spacing: 0.05em;

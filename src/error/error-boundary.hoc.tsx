@@ -1,10 +1,10 @@
 import React from 'react';
 
+import { AppStateInterface } from '@rdx/root.reducer';
+import { ErrorStateInterface } from 'error/error.reducer';
 import { RenderReturn } from '@shared/types/render.type';
 
 import { connect } from 'react-redux';
-import { AppStateInterface } from '@rdx/root.reducer';
-import { ErrorStateInterface } from 'error/error.reducer';
 
 type ErrorBoundaryProps = {
   children: RenderReturn;

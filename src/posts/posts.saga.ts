@@ -36,7 +36,7 @@ function* fetchPostRequest(params: any) {
       const errorPayload = { title: 'Error when fetching posts.', message: 'Oops' };
       yield put(setPostsAction.failure(errorPayload));
       yield put(
-        setErrorAction.fulfill({
+        setErrorAction.trigger({
           containerName: params.payload,
           ...errorPayload,
         }),

@@ -1,30 +1,35 @@
 import React, { useEffect, Suspense, lazy } from 'react';
 
 import { AppStateInterface } from '@rdx/root.reducer';
-import { IPosts } from 'posts/post.interface';
-import { PostType } from '@posts/post.type';
+import { IPosts } from './post.interface';
+import { PostType } from './post.type';
 
 import { connect } from 'react-redux';
-import { setPostsAction } from 'posts/posts.action';
-import { clearErrorAction } from 'error/error.action';
-import { ErrorStateInterface } from 'error/error.reducer';
+import { clearErrorAction } from '@error/error.action';
+import { setPostsAction } from './posts.action';
 
 import './post.styles.css';
 
-const PostComponent = lazy(() => import('posts/post.lazy'));
+const PostComponent = lazy(() => import('./post.lazy'));
 
 type PostsProps = {
-  posts: IPosts;
   containerName: string;
-  errors: ErrorStateInterface;
+  isLoadingData: boolean;
+  hasError: boolean;
+  postsUnmounted: boolean;
+  posts: IPosts;
+  clearErrorAction: Function;
   fetchPostsAction: Function;
   cancelPostsAction: Function;
 };
 
 const Posts = ({
-  posts,
   containerName,
-  errors,
+  isLoadingData,
+  hasError,
+  postsUnmounted,
+  posts,
+  clearErrorAction,
   fetchPostsAction,
   cancelPostsAction,
 }: PostsProps) => {
@@ -33,17 +38,19 @@ const Posts = ({
     fetchPostsAction(containerName);
 
     return () => cancelPostsAction('Canceled fetch posts');
-  }, [containerName, fetchPostsAction, cancelPostsAction]);
+  }, [containerName, clearErrorAction, fetchPostsAction, cancelPostsAction]);
 
-  if (errors[containerName] !== undefined) {
-    throw new Error();
-  }
+  useEffect(() => {
+    if (!isLoadingData && hasError && !postsUnmounted) {
+      throw new Error('Error when fetching posts');
+    }
+  }, [isLoadingData, hasError, postsUnmounted]);
 
   const items = Object.values(posts);
 
   const renderPosts = items.map((post: PostType) => {
     return (
-      <Suspense fallback={<div></div>} key={post.id}>
+      <Suspense fallback={<div>Loading...</div>} key={post.id}>
         <PostComponent post={post} />
       </Suspense>
     );
@@ -57,14 +64,16 @@ const Posts = ({
 };
 
 const mapStateToProps = (state: AppStateInterface) => ({
+  isLoadingData: state.posts.isLoadingData,
+  hasError: state.posts.hasError,
+  postsUnmounted: state.posts.postsUnmounted,
   posts: state.posts.items,
-  errors: state.error,
 });
 
 const mapDispatchToProps = {
+  clearErrorAction: clearErrorAction.trigger,
   fetchPostsAction: setPostsAction.request,
   cancelPostsAction: setPostsAction.fulfill,
-  clearErrorAction: clearErrorAction.fulfill,
 };
 
 export const PostsContainer = connect(
