@@ -63,23 +63,21 @@ const SongList = ({
   };
 
   return (
-    <div>
-      <table className={classes.table}>
-        {hasHeadings && (
-          <thead>
-            <tr className={classes.tr}>
-              <th className={classNames(classes.table__heading, classes['th--title'])}>
-                <span>Title</span>
-              </th>
-              <th className={classNames(classes.table__heading, classes['th--artist'])}>
-                <span>Artist</span>
-              </th>
-            </tr>
-          </thead>
-        )}
-        <tbody>{renderSongs(songs)}</tbody>
-      </table>
-    </div>
+    <table className={classes.table}>
+      {hasHeadings && (
+        <thead>
+          <tr className={classes.tr}>
+            <th className={classNames(classes.table__heading, classes['th--title'])}>
+              <span>Title</span>
+            </th>
+            <th className={classNames(classes.table__heading, classes['th--artist'])}>
+              <span>Artist</span>
+            </th>
+          </tr>
+        </thead>
+      )}
+      <tbody>{renderSongs(songs)}</tbody>
+    </table>
   );
 };
 

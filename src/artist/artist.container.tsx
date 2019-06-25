@@ -4,26 +4,24 @@ import { connect } from 'react-redux';
 
 import { ArtistHeaderComponent } from './header.component';
 
-import injectSheet, { ThemeProvider } from 'react-jss';
-import { ArtistAlbumContainer } from '@album/artist-album.container';
+import injectSheet from 'react-jss';
+import { ArtistAlbumContainer } from '../album/artist-album.container';
 
 interface ArtistProps {
   classes?: any;
 }
 
-const artistStyles = (theme: ThemeProvider) => ({
+const artistStyles = (theme: any) => ({
   artist: {
     background: '#1c1c1c',
   },
-  artist__container: {
-    width: '85%',
-    margin: 'auto',
-    padding: '100px 0',
-    color: '#fff',
-  },
   artist__overview: {
-    padding: '40px 0',
+    ...theme.container,
+    flexWrap: 'wrap',
+    color: '#fff',
+    paddingBottom: 60,
     '& h2': {
+      color: '#fff',
       margin: 30,
     },
   },
@@ -32,12 +30,10 @@ const artistStyles = (theme: ThemeProvider) => ({
 const Artist = ({ classes }: ArtistProps) => {
   return (
     <div className={classes.artist}>
-      <div className={classes.artist__container}>
-        <ArtistHeaderComponent />
-        <div className={classes.artist__overview}>
-          <h2>Popular songs</h2>
-          <ArtistAlbumContainer />
-        </div>
+      <ArtistHeaderComponent />
+      <div className={classes.artist__overview}>
+        <h2>Popular songs</h2>
+        <ArtistAlbumContainer />
       </div>
     </div>
   );

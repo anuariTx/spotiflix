@@ -13,6 +13,8 @@ const songItemStyles = (theme: ThemeProvider) => ({
     padding: '15px 0',
     transition: 'all .3s ease',
     background: '#1c1c1c',
+    borderTop: '0.5px solid rgba(255,255,255,0.15)',
+    borderBottom: '0.5px solid rgba(255,255,255,0.15)',
     '&:hover': {
       background: '#000',
     },
@@ -20,20 +22,25 @@ const songItemStyles = (theme: ThemeProvider) => ({
   song__title: {
     color: '#fff',
     paddingLeft: 40,
-    width: 400,
+    width: '40%',
   },
   song__artist: {
     color: 'rgba(255,255,255, 0.7)',
+    width: '60%',
   },
   song__cell: {
+    display: 'flex',
+    alignItems: 'center',
     fontSize: 14,
     fontWeight: '400',
-    '& span': {
-      cursor: 'pointer',
+    cursor: 'pointer',
+    '& span, i': {
+      verticalAlign: '-webkit-baseline-middle',
     },
   },
   song__btnPlay: {
-    marginRight: '20px',
+    fontSize: 24,
+    marginRight: 20,
     color: '#979797',
   },
 });
@@ -46,10 +53,8 @@ interface SongItemInterface {
 const SongItem = ({ song, classes }: SongItemInterface) => (
   <tr className={classes.song}>
     <td className={classNames(classes.song__title, classes.song__cell)}>
-      <span>
-        <i className={classNames('fas fa-play-circle', classes.song__btnPlay)} />
-        {song.name}
-      </span>
+      <i className={classNames('fas fa-play-circle', classes.song__btnPlay)} />
+      {song.name}
     </td>
     <td className={classNames(classes.song__artist, classes.song__cell)}>
       <span>{song.artists[0].name}</span>
