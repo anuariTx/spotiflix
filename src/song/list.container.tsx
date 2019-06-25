@@ -15,6 +15,7 @@ const songListStyles = {
   table: {
     background: '#1c1c1c',
     color: '#fff',
+    width: '100%',
   },
   table__heading: {
     display: 'flex',
@@ -40,10 +41,17 @@ interface SongListProps {
   songs: SongType[];
   fetchSongsAction: Function;
   cancelFetchSongsAction: Function;
+  hasHeadings?: boolean;
   classes?: any;
 }
 
-const SongList = ({ songs, fetchSongsAction, cancelFetchSongsAction, classes }: SongListProps) => {
+const SongList = ({
+  songs,
+  fetchSongsAction,
+  cancelFetchSongsAction,
+  classes,
+  hasHeadings = true,
+}: SongListProps) => {
   useEffect(() => {
     fetchSongsAction();
 
@@ -56,18 +64,19 @@ const SongList = ({ songs, fetchSongsAction, cancelFetchSongsAction, classes }: 
 
   return (
     <div>
-      <h1>Song List</h1>
       <table className={classes.table}>
-        <thead>
-          <tr className={classes.tr}>
-            <th className={classNames(classes.table__heading, classes['th--title'])}>
-              <span>Title</span>
-            </th>
-            <th className={classNames(classes.table__heading, classes['th--artist'])}>
-              <span>Artist</span>
-            </th>
-          </tr>
-        </thead>
+        {hasHeadings && (
+          <thead>
+            <tr className={classes.tr}>
+              <th className={classNames(classes.table__heading, classes['th--title'])}>
+                <span>Title</span>
+              </th>
+              <th className={classNames(classes.table__heading, classes['th--artist'])}>
+                <span>Artist</span>
+              </th>
+            </tr>
+          </thead>
+        )}
         <tbody>{renderSongs(songs)}</tbody>
       </table>
     </div>
@@ -77,7 +86,6 @@ const SongList = ({ songs, fetchSongsAction, cancelFetchSongsAction, classes }: 
 const SongListUnloaded = ({ classes }: any) => {
   return (
     <div>
-      <h1>Song List</h1>
       <table className={classes.table}>
         <thead>
           <tr className={classes.tr}>
@@ -110,7 +118,7 @@ const mapDispatchToProps = {
 
 export const SongListStyled = injectSheet(songListStyles)(SongList);
 export const SongListUnloadedComponent = injectSheet(songListStyles)(SongListUnloaded);
-export const SongListComponent = connect(
+export const SongListContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
 )(SongListStyled);
