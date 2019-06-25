@@ -1,4 +1,4 @@
-import { takeLatest, put, call } from 'redux-saga/effects';
+import { takeEvery, put, call } from 'redux-saga/effects';
 
 import { fetchAlbumAction } from '@album/album.action';
 import { setErrorAction } from '@error/error.action';
@@ -64,6 +64,6 @@ function* fetchAlbumRequest(params: any) {
 }
 
 export function* fetchAlbumSaga() {
-  yield takeLatest(fetchAlbumAction.REQUEST, fetchAlbumRequest);
-  yield takeLatest(fetchAlbumAction.FULFILL, cancelService);
+  yield takeEvery(fetchAlbumAction.REQUEST, fetchAlbumRequest);
+  yield takeEvery(fetchAlbumAction.FULFILL, cancelService);
 }
