@@ -1,47 +1,58 @@
 import { ErrorType } from '@shared/types/error.type';
 import { ActionInterface } from '@interfaces/action.interface';
+import { AlbumInterface } from '@album/album.interface';
 
 import { handleActions } from 'redux-actions';
 
 import { fetchAlbumAction } from '@album/album.action';
-import { IPosts } from '@posts/post.interface';
 
-export interface PostsStateInterface {
-  items: IPosts;
+interface AlbumItemInterface {
+  data: AlbumInterface;
   isLoadingData: boolean;
   hasError: boolean;
-  postsUnmounted: boolean;
+  isUnmounted: boolean;
   error?: ErrorType;
 }
 
-const INITIAL_STATE: PostsStateInterface = {
-  isLoadingData: false,
-  hasError: false,
-  postsUnmounted: false,
-  items: {},
-};
+export interface AlbumsStateInterface {
+  [key: string]: AlbumItemInterface;
+}
 
-export const postsReducer = handleActions(
+const INITIAL_STATE: AlbumsStateInterface = {};
+
+export const albumsReducer = handleActions(
   {
-    [setPostsAction.REQUEST]: () => ({
-      ...INITIAL_STATE,
-      isLoadingData: true,
-    }),
-    [setPostsAction.FAILURE]: (state: any, { payload }: ActionInterface) => ({
+    [fetchAlbumAction.REQUEST]: (state: AlbumsStateInterface, { payload }: ActionInterface) => ({
       ...state,
-      isLoadingData: false,
-      hasError: true,
-      error: payload,
+      [payload.id]: {
+        ...state[payload.id],
+        isLoadingData: true,
+      },
     }),
-    [setPostsAction.SUCCESS]: (state: any, { payload }: ActionInterface) => ({
+    [fetchAlbumAction.FAILURE]: (state: AlbumsStateInterface, { payload }: ActionInterface) => ({
       ...state,
-      isLoadingData: false,
-      items: { ...payload },
+      [payload.id]: {
+        ...state[payload.id],
+        isLoadingData: false,
+        hasError: true,
+        error: payload,
+      },
     }),
-    [setPostsAction.FULFILL]: (state: any) => ({
+    [fetchAlbumAction.SUCCESS]: (state: AlbumsStateInterface, { payload }: ActionInterface) => ({
       ...state,
-      isLoadingData: false,
-      postsUnmounted: true,
+      [payload.id]: {
+        ...state[payload.id],
+        isLoadingData: false,
+        data: payload,
+      },
+    }),
+    [fetchAlbumAction.FULFILL]: (state: AlbumsStateInterface, { payload }: ActionInterface) => ({
+      ...state,
+      [payload.id]: {
+        ...state[payload.id],
+        isLoadingData: false,
+        isUnmounted: true,
+      },
     }),
   },
   INITIAL_STATE,

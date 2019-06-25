@@ -1,12 +1,18 @@
 import React from 'react';
 
-import { ItemInterface } from './item.interface';
-
 import LazyLoad from 'react-lazyload';
 
 import injectSheet from 'react-jss';
 
 import './item.styles.css';
+
+interface ItemPropsInterface {
+  title: string;
+  subtitle?: string;
+  imageURL: string;
+  isRounded: boolean;
+  classes: { item: string };
+}
 
 const styles = (theme: any) => ({
   item: {
@@ -15,7 +21,7 @@ const styles = (theme: any) => ({
   },
 });
 
-export const Item = ({ title, subtitle, imageURL, isRounded, classes }: ItemInterface) => (
+export const Item = ({ title, subtitle, imageURL, isRounded, classes }: ItemPropsInterface) => (
   <LazyLoad>
     <div className={`item ${classes.item}`}>
       <img
