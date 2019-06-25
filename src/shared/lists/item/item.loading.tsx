@@ -2,14 +2,14 @@ import React from 'react';
 
 import Skeleton from 'react-skeleton-loader';
 
-import './grid-item.styles.css';
+import './item.styles.css';
 
-export interface GridItemLoadingInterface {
+export interface ItemLoadingInterface {
   isRounded: boolean;
 }
 
-export const GridItemLoadingComponent = ({ isRounded }: GridItemLoadingInterface) => (
-  <div className="grid-item--loading">
+export const ItemLoadingComponent = ({ isRounded }: ItemLoadingInterface) => (
+  <div className="item--loading">
     <Skeleton
       width={'200px'}
       height={'200px'}
@@ -20,6 +20,6 @@ export const GridItemLoadingComponent = ({ isRounded }: GridItemLoadingInterface
   </div>
 );
 
-GridItemLoadingComponent.defaultProps = {
+ItemLoadingComponent.defaultProps = {
   isRounded: false,
 };

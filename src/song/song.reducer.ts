@@ -1,4 +1,4 @@
-import { ActionInterface } from './../shared/interfaces/action.interface';
+import { ActionInterface } from '@interfaces/action.interface';
 import { SongType } from './song.type';
 
 import { handleActions } from 'redux-actions';
