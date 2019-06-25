@@ -6,4 +6,6 @@ export interface ArtistInterface {
   image: string;
   topSongs: SongInterface[];
   albums: AlbumInterface[];
+  bio: string;
+  gallery: string[];
 }

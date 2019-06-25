@@ -22,20 +22,14 @@ const INITIAL_STATE: AlbumsStateInterface = {};
 
 export const albumsReducer = handleActions(
   {
-    [fetchAlbumAction.REQUEST]: (state: AlbumsStateInterface, { payload }: ActionInterface) => ({
-      ...state,
-      [payload.id]: {
-        ...state[payload.id],
-        isLoadingData: true,
-      },
-    }),
     [fetchAlbumAction.FAILURE]: (state: AlbumsStateInterface, { payload }: ActionInterface) => ({
       ...state,
       [payload.id]: {
         ...state[payload.id],
         isLoadingData: false,
         hasError: true,
-        error: payload,
+        isUnmounted: false,
+        error: payload.error,
       },
     }),
     [fetchAlbumAction.SUCCESS]: (state: AlbumsStateInterface, { payload }: ActionInterface) => ({
@@ -43,6 +37,8 @@ export const albumsReducer = handleActions(
       [payload.id]: {
         ...state[payload.id],
         isLoadingData: false,
+        hasError: false,
+        isUnmounted: false,
         data: payload,
       },
     }),
