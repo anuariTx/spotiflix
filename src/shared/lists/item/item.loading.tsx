@@ -5,15 +5,15 @@ import Skeleton from 'react-skeleton-loader';
 import './item.styles.css';
 
 export interface ItemLoadingInterface {
-  isRounded: boolean;
+  isRound: boolean;
 }
 
-export const ItemLoadingComponent = ({ isRounded }: ItemLoadingInterface) => (
+export const ItemLoadingComponent = ({ isRound }: ItemLoadingInterface) => (
   <div className="item--loading">
     <Skeleton
       width={'200px'}
       height={'200px'}
-      borderRadius={isRounded ? '50%' : '0px'}
+      borderRadius={isRound ? '50%' : '0px'}
       widthRandomness={0}
     />
     <Skeleton width={'180px'} height={'25px'} borderRadius={'0'} widthRandomness={0} />
@@ -21,5 +21,5 @@ export const ItemLoadingComponent = ({ isRounded }: ItemLoadingInterface) => (
 );
 
 ItemLoadingComponent.defaultProps = {
-  isRounded: false,
+  isRound: false,
 };

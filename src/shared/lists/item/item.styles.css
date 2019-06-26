@@ -11,7 +11,7 @@
   height: 200px;
 }
 
-.item__image--rounded {
+.item__image--round {
   border-radius: 50%;
 }
 
@@ -30,6 +30,10 @@
 .item__subtitle {
   margin-top: 2px;
   font-weight: 300;
+}
+
+.item__subtitle__link:hover {
+  text-decoration: underline;
 }
 
 .item__title,

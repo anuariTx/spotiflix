@@ -1,13 +1,10 @@
+import { SubtitleLinkInterface } from '@interfaces/subtitle-link.interface';
+
 export interface AlbumInterface {
   id: string;
   title: string;
   image: string;
-  artists: AlbumArtistInterface[];
+  artists: SubtitleLinkInterface[];
   releaseDate: string;
   trackIDs: string[];
-}
-
-export interface AlbumArtistInterface {
-  id: string;
-  name: string;
 }

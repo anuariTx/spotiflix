@@ -6,7 +6,7 @@ import { handleActions } from 'redux-actions';
 
 import { fetchAlbumAction } from '@album/album.action';
 
-interface AlbumItemInterface {
+export interface AlbumItemInterface {
   data: AlbumInterface;
   isLoadingData: boolean;
   hasError: boolean;
