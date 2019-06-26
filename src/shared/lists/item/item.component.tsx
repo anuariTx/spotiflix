@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 import LazyLoad from 'react-lazyload';
 import injectSheet from 'react-jss';
-import { formatLinkPath } from '../../utils/formatLinkPath';
+import { formatLinkPath } from '@utils/formatLinkPath';
 
 import './item.styles.css';
 

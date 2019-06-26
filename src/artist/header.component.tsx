@@ -3,8 +3,8 @@ import React from 'react';
 import {
   PlaylistThumbComponent,
   PlaylistThumbUnloadedComponent,
-} from '../playlist/thumb.component';
-import { ButtonPlayComponent } from '../shared/controls/button/play.component';
+} from '@playlist/thumb.component';
+import { ButtonPlayComponent } from '@shared/controls/button/play.component';
 
 import injectSheet from 'react-jss';
 import classNames from 'classnames';

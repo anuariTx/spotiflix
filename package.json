@@ -128,7 +128,6 @@
     "@types/storybook__addon-knobs": "^5.0.1",
     "@types/storybook__addon-viewport": "^4.1.1",
     "@types/storybook__react": "^4.0.2",
-    "awesome-typescript-loader": "^5.2.1",
     "babel-plugin-module-resolver": "^3.2.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
