@@ -1,6 +1,7 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 
-import { AlbumArtistInterface, AlbumInterface } from '@album/album.interface';
+import { AlbumInterface } from '@album/album.interface';
+import { SubtitleLinkInterface } from '@interfaces/subtitle-link.interface';
 
 import { fetchAlbumAction } from '@album/album.action';
 import { setErrorAction } from '@error/error.action';
@@ -37,7 +38,7 @@ function* fetchAlbumRequest(params: any) {
       title: data.name,
       image: data.images[1].url,
       artists: data.artists.map(
-        (artist: any): AlbumArtistInterface => ({ id: artist.id, name: artist.name }),
+        (artist: any): SubtitleLinkInterface => ({ id: artist.id, name: artist.name }),
       ),
       releaseDate: data.release_date,
       trackIDs: data.tracks.items.map((track: any) => track.id),
