@@ -1,11 +1,12 @@
 import React from 'react';
 
+import { MemoryRouter } from 'react-router';
+
 import { storiesOf } from '@storybook/react';
 
-import { ItemComponent } from './item.component';
+import { ItemComponent, Item } from './item.component';
 import { ItemLoadingComponent } from './item.loading';
-import { ItemErrorComponent } from './item.error';
-import { MemoryRouter } from 'react-router';
+import { ItemErrorComponent, ItemError } from './item.error';
 
 const albumItem = {
   title: "She's So Unusual",
@@ -25,13 +26,19 @@ const albumItemManyArtists = {
 };
 
 const artistItem = {
-  title: 'Band of Horses',
-  subtitle: '306565 fans',
-  imageURL: 'https://i.scdn.co/image/2f91c3cace3c5a6a48f3d0e2fd21364d4911b332',
+  title: 'Blur',
+  subtitle: '1429887 fans',
+  imageURL: 'https://i.scdn.co/image/78a6b33a8b1d2e627d21e979f0cac8a6d7ad402f',
   isRound: true,
 };
 
 storiesOf('Item', module)
+  .addParameters({
+    info: {
+      propTables: [Item],
+      propTablesExclude: [ItemComponent],
+    },
+  })
   .addDecorator(story => (
     <MemoryRouter initialEntries={['/']}>
       <div style={{ fontFamily: 'Lato, sans-serif' }}>{story()}</div>
@@ -39,7 +46,19 @@ storiesOf('Item', module)
   ))
   .add('Album Item', () => <ItemComponent {...albumItem} />)
   .add('Album Item with many artists', () => <ItemComponent {...albumItemManyArtists} />)
-  .add('Artist Item', () => <ItemComponent {...artistItem} />)
+  .add('Artist Item', () => <ItemComponent {...artistItem} />);
+
+storiesOf('Loading Item', module)
+  .addDecorator(story => <div style={{ fontFamily: 'Lato, sans-serif' }}>{story()}</div>)
   .add('Loading Album', () => <ItemLoadingComponent />)
-  .add('Loading Artist', () => <ItemLoadingComponent isRound={true} />)
+  .add('Loading Artist', () => <ItemLoadingComponent isRound={true} />);
+
+storiesOf('Error Item', module)
+  .addDecorator(story => <div style={{ fontFamily: 'Lato, sans-serif' }}>{story()}</div>)
+  .addParameters({
+    info: {
+      propTables: [ItemError],
+      propTablesExclude: [ItemErrorComponent],
+    },
+  })
   .add('Error', () => <ItemErrorComponent />);
