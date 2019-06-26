@@ -10,4 +10,4 @@ export const SET_POSTS = 'SET_POSTS';
 
 export const FETCH_SONG_LIST = 'FETCH_SONG_LIST';
 
-export const FETCH_LIST_ITEM = 'FETCH_LIST_ITEM';
+export const FETCH_ALBUM = 'FETCH_ALBUM';
