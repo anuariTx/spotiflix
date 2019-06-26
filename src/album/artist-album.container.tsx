@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { connect } from 'react-redux';
 
-import { SongListContainer } from '../song/list.container';
+import { SongListContainer } from '@song/list.container';
 
 import injectSheet, { ThemeProvider } from 'react-jss';
 

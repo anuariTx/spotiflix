@@ -10,7 +10,7 @@ import { ItemLoadingComponent } from '@lists/item/item.loading';
 
 const ItemComponent = lazy(() => import('@lists/item/item.lazy'));
 
-interface AlbumContainerPropsInterface extends AlbumItemInterface {
+export interface AlbumContainerPropsInterface extends AlbumItemInterface {
   id: string;
   containerName: string;
   isRound: boolean;
@@ -19,7 +19,7 @@ interface AlbumContainerPropsInterface extends AlbumItemInterface {
   cancelAction: Function;
 }
 
-const Album = ({
+export const Album = ({
   id,
   containerName,
   isRound,

@@ -3,8 +3,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { ArtistHeaderComponent, ArtistHeaderUnloadedComponent } from './header.component';
-import { ArtistAlbumContainer } from '../album/artist-album.container';
-import { SongListUnloadedComponent } from '../song/list.container';
+import { ArtistAlbumContainer } from '@album/artist-album.container';
+import { SongListUnloadedComponent } from '@song/list.container';
 
 import injectSheet from 'react-jss';
 import Skeleton from 'react-skeleton-loader';

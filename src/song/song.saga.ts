@@ -1,4 +1,4 @@
-import { AxiosService } from './../services/axios/axios.service';
+import { AxiosService } from '@services/axios/axios.service';
 import { fetchSongListAction } from './song.action';
 
 import { takeLatest, put, call } from 'redux-saga/effects';
