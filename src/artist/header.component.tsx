@@ -1,10 +1,15 @@
 import React from 'react';
 
-import { PlaylistThumbComponent } from '../playlist/thumb.component';
+import {
+  PlaylistThumbComponent,
+  PlaylistThumbUnloadedComponent,
+} from '../playlist/thumb.component';
 import { ButtonPlayComponent } from '../shared/controls/button/play.component';
 
 import injectSheet from 'react-jss';
 import classNames from 'classnames';
+import Skeleton from 'react-skeleton-loader';
+import LazyLoad from 'react-lazyload';
 
 interface ArtistHeaderProps {
   classes?: any;
@@ -22,6 +27,10 @@ const artistHeaderStyles = (theme: any) => ({
   },
   artist__info: {
     margin: 'auto',
+  },
+  'artist__info--unloaded': {
+    margin: 'auto 0',
+    marginLeft: 120,
   },
   artist__title: {
     fontSize: 40,
@@ -56,4 +65,29 @@ const ArtistHeader = ({ classes }: ArtistHeaderProps) => (
   </div>
 );
 
+const ArtistHeaderUnloaded = ({ classes }: any) => (
+  <LazyLoad>
+    <div className={classes.artist__header}>
+      <div className={classes.artist__headings}>
+        <div>
+          <h5 className={classes.artist__category}>
+            <Skeleton color="#303952" height="25px" borderRadius="3px" />
+          </h5>
+          <PlaylistThumbUnloadedComponent />
+        </div>
+        <div className={classes['artist__info--unloaded']}>
+          <Skeleton color="#303952" borderRadius="3px" width="550px" height="50px" />
+          <h3 className={classes.artist__badge}>
+            <Skeleton color="#303952" borderRadius="3px" width="330px" height="40px" />
+          </h3>
+          <div className={classes['artist__btn-play']}>
+            <Skeleton color="#303952" borderRadius="3px" width="150px" height="30px" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </LazyLoad>
+);
+
+export const ArtistHeaderUnloadedComponent = injectSheet(artistHeaderStyles)(ArtistHeaderUnloaded);
 export const ArtistHeaderComponent = injectSheet(artistHeaderStyles)(ArtistHeader);

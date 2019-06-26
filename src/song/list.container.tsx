@@ -10,6 +10,7 @@ import { fetchSongListAction } from './song.action';
 import injectSheet from 'react-jss';
 import classNames from 'classnames';
 import { SongType } from './song.type';
+import Skeleton from 'react-skeleton-loader';
 
 const songListStyles = {
   table: {
@@ -85,16 +86,6 @@ const SongListUnloaded = ({ classes }: any) => {
   return (
     <div>
       <table className={classes.table}>
-        <thead>
-          <tr className={classes.tr}>
-            <th className={classNames(classes.table__heading, classes['th--title'])}>
-              <span>Title</span>
-            </th>
-            <th className={classNames(classes.table__heading, classes['th--artist'])}>
-              <span>Artist</span>
-            </th>
-          </tr>
-        </thead>
         <tbody>
           <SongItemUnloadedComponent />
           <SongItemUnloadedComponent />

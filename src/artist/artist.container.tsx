@@ -2,10 +2,12 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 
-import { ArtistHeaderComponent } from './header.component';
+import { ArtistHeaderComponent, ArtistHeaderUnloadedComponent } from './header.component';
+import { ArtistAlbumContainer } from '../album/artist-album.container';
+import { SongListUnloadedComponent } from '../song/list.container';
 
 import injectSheet from 'react-jss';
-import { ArtistAlbumContainer } from '../album/artist-album.container';
+import Skeleton from 'react-skeleton-loader';
 
 interface ArtistProps {
   classes?: any;
@@ -39,7 +41,19 @@ const Artist = ({ classes }: ArtistProps) => {
   );
 };
 
+const ArtistUnloaded = ({ classes }: any) => {
+  return (
+    <div className={classes.artist}>
+      <ArtistHeaderUnloadedComponent />
+      <div className={classes.artist__overview}>
+        <SongListUnloadedComponent />
+      </div>
+    </div>
+  );
+};
+
 export const ArtistStyled = injectSheet(artistStyles)(Artist);
+export const ArtistUnloadedContainer = injectSheet(artistStyles)(ArtistUnloaded);
 export const ArtistContainer = connect(
   null,
   null,
