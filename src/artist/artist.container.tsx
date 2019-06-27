@@ -43,7 +43,7 @@ const Artist = ({ artist, fetchArtistAction, cancelArtistFetchAction, classes }:
     return () => {
       cancelArtistFetchAction('Artist Fetch Cancelled');
     };
-  }, [cancelArtistFetchAction, , fetchArtistAction]);
+  }, [cancelArtistFetchAction, fetchArtistAction]);
 
   return (
     <div className={classes.artist}>

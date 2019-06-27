@@ -50,31 +50,29 @@ const artistHeaderStyles = (theme: any) => ({
   },
 });
 
-const ArtistHeader = ({ artist, classes }: ArtistHeaderProps) => {
-  return (
-    <div className={classes.artist__header}>
-      <div className={classes.artist__headings}>
-        <div>
-          <h5 className={classes.artist__category}>{artist.type}</h5>
-          <PlaylistThumbComponent imgSrc={artist.images[0].url} />
-        </div>
-        <div className={classes.artist__info}>
-          <h1 className={classes.artist__title}>{artist.name}</h1>
-          <h3 className={classes.artist__badge}>Top Rated Artists</h3>
-          <span className={classes.artist__followers}>
-            {artist.followers.total.toLocaleString()} FOLLOWERS
-          </span>
-          <div className={classes['artist__btn-play']}>
-            <ButtonPlayComponent
-              label="PLAY"
-              renderIcon={<i className={classNames('fas fa-play', classes.btn__icon)} />}
-            />
-          </div>
+export const ArtistHeader = ({ artist, classes }: ArtistHeaderProps) => (
+  <div className={classes.artist__header}>
+    <div className={classes.artist__headings}>
+      <div>
+        <h5 className={classes.artist__category}>{artist.type}</h5>
+        <PlaylistThumbComponent imgSrc={artist.images[0].url} />
+      </div>
+      <div className={classes.artist__info}>
+        <h1 className={classes.artist__title}>{artist.name}</h1>
+        <h3 className={classes.artist__badge}>Top Rated Artists</h3>
+        <span className={classes.artist__followers}>
+          {artist.followers.total.toLocaleString()} FOLLOWERS
+        </span>
+        <div className={classes['artist__btn-play']}>
+          <ButtonPlayComponent
+            label="PLAY"
+            renderIcon={<i className={classNames('fas fa-play', classes.btn__icon)} />}
+          />
         </div>
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 const ArtistHeaderUnloaded = ({ classes }: any) => (
   <div className={classes.artist__header}>

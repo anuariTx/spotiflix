@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
 
-import { AppStateInterface } from '@shared/rdx/root.reducer';
-
 import { connect } from 'react-redux';
 
 import { SongListContainer } from '../../song/list.container';
@@ -18,7 +16,7 @@ interface ArtistAlbumProps {
 
 const artistAlbumStyles = (theme: Theming) => ({});
 
-const ArtistAlbum = ({
+export const ArtistAlbum = ({
   artist,
   fetchSongsAction,
   cancelSongsAction,
