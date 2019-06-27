@@ -6,6 +6,7 @@ import { ErrorStateInterface, errorReducer } from '@error/error.reducer';
 import { PostsStateInterface, postsReducer } from '@posts/posts.reducer';
 import { SongsStateInterface, songsReducer } from '@song/song.reducer';
 import { AlbumsStateInterface, albumsReducer } from '@album/albums.reducer';
+import { ArtistStateInterface, artistReducer } from '@artist/artist.reducer';
 
 export interface AppStateInterface {
   auth: AuthStateInterface;
@@ -14,6 +15,7 @@ export interface AppStateInterface {
   posts: PostsStateInterface;
   songs: SongsStateInterface;
   albums: AlbumsStateInterface;
+  artists: ArtistStateInterface;
 }
 
 export const RootReducer = combineReducers<AppStateInterface>({
@@ -23,4 +25,5 @@ export const RootReducer = combineReducers<AppStateInterface>({
   posts: postsReducer,
   songs: songsReducer,
   albums: albumsReducer,
+  artists: artistReducer,
 });
