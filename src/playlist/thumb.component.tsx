@@ -3,6 +3,7 @@ import injectSheet, { ThemeProvider } from 'react-jss';
 import Skeleton from 'react-skeleton-loader';
 import LazyLoad from 'react-lazyload';
 interface ThumbComponentProps {
+  imgSrc: string;
   classes?: any;
 }
 
@@ -19,14 +20,10 @@ const playlistThumbStyles = (theme: ThemeProvider) => ({
   },
 });
 
-const PlaylistThumb = ({ classes }: ThumbComponentProps) => (
+const PlaylistThumb = ({ imgSrc, classes }: ThumbComponentProps) => (
   <LazyLoad>
     <div className={classes.thumb}>
-      <img
-        className={classes.thumb__image}
-        src="https://www.mobafire.com/images/avatars/jax-classic.png"
-        alt="He vuelto"
-      />
+      <img className={classes.thumb__image} src={imgSrc} alt="He vuelto" />
     </div>
   </LazyLoad>
 );

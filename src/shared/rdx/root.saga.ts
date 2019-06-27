@@ -8,6 +8,7 @@ import { fetchPostsSaga } from 'posts/posts.saga';
 import { changeThemeSaga } from '@themes/theme.saga';
 import { fetchSongListSaga } from '@song/song.saga';
 import { fetchAlbumSaga } from '@album/album.saga';
+import { fetchArtistSaga } from '@artist/artist.saga';
 
 export function* rootSaga() {
   yield all([
@@ -19,5 +20,6 @@ export function* rootSaga() {
     fork(changeThemeSaga),
     fork(fetchSongListSaga),
     fork(fetchAlbumSaga),
+    fork(fetchArtistSaga),
   ]);
 }

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { AppStateInterface } from '@shared/rdx/root.reducer';
+import { SongType } from './song.type';
 
 import { SongItemComponent, SongItemUnloadedComponent } from './item.component';
 
@@ -9,8 +10,6 @@ import { fetchSongListAction } from './song.action';
 
 import injectSheet from 'react-jss';
 import classNames from 'classnames';
-import { SongType } from './song.type';
-import Skeleton from 'react-skeleton-loader';
 
 const songListStyles = {
   table: {
@@ -54,8 +53,6 @@ const SongList = ({
   hasHeadings = true,
 }: SongListProps) => {
   useEffect(() => {
-    fetchSongsAction();
-
     return () => cancelFetchSongsAction('Cancel song list fetching');
   }, [cancelFetchSongsAction, fetchSongsAction]);
 
