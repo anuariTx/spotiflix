@@ -7,7 +7,7 @@ let songsService: any;
 
 function* fetchSongListService(endpoint: string) {
   const accessToken =
-    'BQA7etfQ07IjcCK1zVuF6j-BrFy_gY49JmWCFh4WY8w5czim9H4ZlYjVCxYaoe2J8HzAPXZp7PooCib790BBUv-wkGWP3lvciqIKvBX2H2zeb7MTd2h33iQF_nqIHMjabutPDf5mILGb9_-ZF6jpAAcxihYJZL2e-VNcdRK9bWZswzAa0U4Y';
+    'BQBpkETBHOXzZV8cJIQT_L3hxozqi4BoaeEPEhG46AMUODIS1J7PZtHDG_RY6H0A5Hf5IE_Z-CfqFBZxH2gWnCNC7_OgK-SZjJjHgdjJ8S9V08GmzBLzWIefhjZBalT33RLkQQkHD4FFrJCzRpLHkrD5o7n8lJM-7re732Q_KL_vJ-d_WvUR';
   const headers = {
     Authorization: `Bearer ${accessToken}`,
   };

@@ -6,7 +6,7 @@ import {
   ArtistHeaderComponent,
   ArtistHeaderUnloadedComponent,
 } from './header/header.component';
-import { ArtistUnloadedContainer } from './artist.container';
+import { ArtistUnloadedContainer, ArtistStyled } from './artist.container';
 
 import { artistDummy } from './artist.dummy';
 import { MemoryRouter } from 'react-router';
@@ -25,4 +25,11 @@ storiesOf('Artist', module)
   ))
   .add('Header', () => <ArtistHeaderComponent artist={artistDummy} />)
   .add('Header Loading', () => <ArtistHeaderUnloadedComponent />)
-  .add('Artist Loading', () => <ArtistUnloadedContainer />);
+  .add('Artist Loading', () => <ArtistUnloadedContainer />)
+  .add('Artist', () => (
+    <ArtistStyled
+      artist={[artistDummy]}
+      fetchArtistAction={() => {}}
+      cancelArtistFetchAction={() => {}}
+    />
+  ));
