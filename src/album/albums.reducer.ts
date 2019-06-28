@@ -7,7 +7,7 @@ import { handleActions } from 'redux-actions';
 import { fetchAlbumAction } from '@album/album.action';
 
 export interface AlbumItemInterface {
-  data: AlbumInterface;
+  data: AlbumInterface | {};
   isLoadingData: boolean;
   hasError: boolean;
   isUnmounted: boolean;
