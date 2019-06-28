@@ -45,14 +45,14 @@ export const Album = ({
     }
   }, [id, isLoadingData, hasError, isUnmounted]);
 
-  const info: AlbumInterface = data || {};
+  const { title, artists, image }: AlbumInterface = data || {};
 
   return (
     <Suspense fallback={<ItemLoadingComponent isRound={isRound} />}>
       <ItemComponent
-        title={info.title}
-        subtitle={info.artists}
-        imageURL={info.image}
+        title={title}
+        subtitle={artists}
+        imageURL={image}
         isRound={isRound}
       />
     </Suspense>
