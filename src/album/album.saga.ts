@@ -12,7 +12,7 @@ let albumService: AxiosService;
 
 function* fetchService(id: string) {
   const accessToken =
-    'BQDYPux_ni4mxqdmJrdvk1HYJad2gqdpsNjs7HHmyMQZ4-NInMkR7Gs7PqCRTTNjjignNLzQqY5U-ELb55DB_MJ355qfnhUpRMQ4rSM2rMoM7CHCK2ZMKMSEFH_A-5DDctXuQjA9RlSDZeJIAc5OZFM-gRAECZFMti3x4ribzlnjQzg7w492';
+    'BQBAf5MRfWS4uuyvnZoz_QyPZ2tZQ7h-C33mHFgYjTRyH3Zub25GYtlk-YSNs_w_RIz2jwL8afncj1T6e_Nh8sYwDZlRbhAol6JXktcGE3ozrh-mUjuGSM0XmwkCZcPM109vzp7vXfW35c1Ukbu5wqyjVw';
   const headers = {
     Authorization: `Bearer ${accessToken}`,
   };
@@ -24,17 +24,17 @@ function* fetchService(id: string) {
 }
 
 function* cancelService(params: any) {
-  yield albumService.cancelRequest(params.payload);
+  yield albumService.cancelRequest(params.payload.msg);
 }
 
 function* fetchAlbumRequest(params: any) {
-  const { albumId, containerName } = params.payload;
+  const { id, containerName } = params.payload;
 
   try {
-    const data = yield call(fetchService, albumId);
+    const data = yield call(fetchService, id);
 
     const payload: AlbumInterface = {
-      id: albumId,
+      id,
       title: data.name,
       image: data.images[1].url,
       artists: data.artists.map(
@@ -52,8 +52,8 @@ function* fetchAlbumRequest(params: any) {
   } catch (error) {
     if (!error.wasCancelled) {
       const errorPayload = {
-        id: albumId,
-        error: { title: `Error when fetching album: ${albumId}`, message: 'Oops' },
+        id: id,
+        error: { title: `Error when fetching album: ${id}`, message: 'Oops' },
       };
 
       yield put(fetchAlbumAction.failure(errorPayload));

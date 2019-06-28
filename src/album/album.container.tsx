@@ -1,6 +1,7 @@
 import React, { useEffect, Suspense, lazy } from 'react';
 
 import { AlbumItemInterface } from './albums.reducer';
+import { AlbumInterface } from '@album/album.interface';
 
 import { connect } from 'react-redux';
 import { clearErrorAction } from '@error/error.action';
@@ -35,7 +36,7 @@ export const Album = ({
     clearErrorAction(containerName);
     fetchAction({ id, containerName });
 
-    return () => cancelAction(`Canceled fetch item: ${id}`);
+    return () => cancelAction({ id: id, msg: `Canceled fetch item: ${id}` });
   }, [id, containerName, clearErrorAction, fetchAction, cancelAction]);
 
   useEffect(() => {
@@ -44,12 +45,14 @@ export const Album = ({
     }
   }, [id, isLoadingData, hasError, isUnmounted]);
 
+  const info: AlbumInterface = data || {};
+
   return (
     <Suspense fallback={<ItemLoadingComponent isRound={isRound} />}>
       <ItemComponent
-        title={data.title}
-        subtitle={data.artists}
-        imageURL={data.image}
+        title={info.title}
+        subtitle={info.artists}
+        imageURL={info.image}
         isRound={isRound}
       />
     </Suspense>

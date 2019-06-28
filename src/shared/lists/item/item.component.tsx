@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 import LazyLoad from 'react-lazyload';
 import injectSheet from 'react-jss';
+import uuidv4 from 'uuid/v4';
 import { formatLinkPath } from '@utils/formatLinkPath';
 
 import './item.styles.css';
@@ -42,7 +43,7 @@ export const Item = ({ title, subtitle, imageURL, isRound, classes }: ItemPropsI
     let itemSub;
     if (isSubtitleLinkArray(subtitle)) {
       itemSub = subtitle.map((artist, index) => (
-        <Fragment>
+        <Fragment key={uuidv4()}>
           <Link
             className={`item__subtitle__link ${classes.item__link}`}
             to={`artist/${formatLinkPath(artist.name)}`}
