@@ -164,7 +164,14 @@ const albums = {
     isUnmounted: false,
   },
   '7eyQXxuf2nGj9d2367Gi5': {
-    data: {},
+    data: {
+      artists: [],
+      id: '7eyQXxuf2nGj9d2367Gi5',
+      image: '',
+      releaseDate: '',
+      title: '',
+      trackIDs: [],
+    },
     hasError: true,
     isLoadingData: false,
     isUnmounted: true,
