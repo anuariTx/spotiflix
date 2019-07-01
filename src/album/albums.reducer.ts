@@ -1,3 +1,4 @@
+import { RoutineStages } from 'redux-saga-routines';
 import { ErrorType } from '@shared/types/error.type';
 import { ActionInterface } from '@interfaces/action.interface';
 import { AlbumInterface } from '@album/album.interface';
@@ -8,9 +9,7 @@ import { fetchAlbumAction } from '@album/album.action';
 
 export interface AlbumItemInterface {
   data: AlbumInterface;
-  isLoadingData: boolean;
-  hasError: boolean;
-  isUnmounted: boolean;
+  state: RoutineStages;
   error?: ErrorType;
 }
 
@@ -25,9 +24,7 @@ export const albumsReducer = handleActions(
     [fetchAlbumAction.REQUEST]: (state: AlbumsStateInterface, { payload }: ActionInterface) => ({
       ...state,
       [payload.id]: {
-        isLoadingData: true,
-        hasError: false,
-        isUnmounted: false,
+        state: 'REQUEST',
         data: {},
       },
     }),
@@ -35,8 +32,7 @@ export const albumsReducer = handleActions(
       ...state,
       [payload.id]: {
         ...state[payload.id],
-        isLoadingData: false,
-        hasError: true,
+        state: 'FAILURE',
         error: payload.error,
       },
     }),
@@ -44,7 +40,7 @@ export const albumsReducer = handleActions(
       ...state,
       [payload.id]: {
         ...state[payload.id],
-        isLoadingData: false,
+        state: 'SUCCESS',
         data: payload,
       },
     }),
@@ -53,8 +49,7 @@ export const albumsReducer = handleActions(
         ...state,
         [payload.id]: {
           ...state[payload.id],
-          isLoadingData: false,
-          isUnmounted: true,
+          state: 'FULFILL',
         },
       };
     },

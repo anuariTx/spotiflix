@@ -12,7 +12,7 @@ let albumService: AxiosService;
 
 function* fetchService(id: string) {
   const accessToken =
-    'BQDlbs4Pp9CGH_siOLnzgBqrRI_2IyjGxyjOiPkey7e0-guWZ_E48oWOi4ziZOw5DOjb3VIBj3pl5Ec1RM5VG5YhkLAEee-YJ6YZjfpMb2bcD6Fi10ePvHibfwdAycT8YkrGi_wVpREFbdtDEFF_7wu7tA';
+    'BQApxx-ZukHHr6ofFYeGbBxMX3dNjRFv9BJD52ClonY5yFIDhN29xwGihTWLqgV6sDuCuE73CZ13zwfZzSsmAGKfFE86eKMPLI3B7tkscf_4lV3-Ok5vXTg4LNQLyM_rii7hmHFtZJ9oeo07cgltrfAe9w';
   const headers = {
     Authorization: `Bearer ${accessToken}`,
   };
