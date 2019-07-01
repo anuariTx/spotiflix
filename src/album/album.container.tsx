@@ -14,6 +14,7 @@ const ItemComponent = lazy(() => import('@lists/item/item.lazy'));
 export interface AlbumContainerPropsInterface extends AlbumItemInterface {
   id: string;
   containerName: string;
+  fallback: JSX.Element;
   isRound: boolean;
   clearErrorAction: Function;
   fetchAction: Function;
@@ -23,8 +24,10 @@ export interface AlbumContainerPropsInterface extends AlbumItemInterface {
 export const Album = ({
   id,
   containerName,
+  fallback,
   isRound,
   data,
+  state,
   clearErrorAction,
   fetchAction,
   cancelAction,
@@ -38,7 +41,9 @@ export const Album = ({
 
   const { title, artists, image }: AlbumInterface = data || {};
 
-  return (
+  return state === 'FAILURE' ? (
+    fallback
+  ) : (
     <Suspense fallback={<ItemLoadingComponent isRound={isRound} />}>
       <ItemComponent title={title} subtitle={artists} imageURL={image} isRound={isRound} />
     </Suspense>

@@ -20,8 +20,14 @@ export interface GridContainerPropsInterface {
 export const Grid = ({ ids, areRound, albums }: GridContainerPropsInterface) => {
   const renderAlbums = ids.map(id => {
     return (
-      <ErrorBoundaryHOC containerName={`ALBUM_${id}`} fallback={<ItemErrorComponent />} key={id}>
-        <AlbumContainer id={id} containerName={`ALBUM_${id}`} isRound={areRound} {...albums[id]} />
+      <ErrorBoundaryHOC fallback={<ItemErrorComponent />} key={id}>
+        <AlbumContainer
+          id={id}
+          containerName={`ALBUM_${id}`}
+          fallback={<ItemErrorComponent />}
+          isRound={areRound}
+          {...albums[id]}
+        />
       </ErrorBoundaryHOC>
     );
   });
