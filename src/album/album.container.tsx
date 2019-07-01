@@ -49,12 +49,7 @@ export const Album = ({
 
   return (
     <Suspense fallback={<ItemLoadingComponent isRound={isRound} />}>
-      <ItemComponent
-        title={title}
-        subtitle={artists}
-        imageURL={image}
-        isRound={isRound}
-      />
+      <ItemComponent title={title} subtitle={artists} imageURL={image} isRound={isRound} />
     </Suspense>
   );
 };
