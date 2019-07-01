@@ -25,9 +25,6 @@ export const Album = ({
   containerName,
   isRound,
   data,
-  isLoadingData,
-  hasError,
-  isUnmounted,
   clearErrorAction,
   fetchAction,
   cancelAction,
@@ -38,12 +35,6 @@ export const Album = ({
 
     return () => cancelAction({ id: id, msg: `Canceled fetch item: ${id}` });
   }, [id, containerName, clearErrorAction, fetchAction, cancelAction]);
-
-  useEffect(() => {
-    if (!isLoadingData && hasError && !isUnmounted) {
-      throw new Error(`Error when fetching item: ${id}`);
-    }
-  }, [id, isLoadingData, hasError, isUnmounted]);
 
   const { title, artists, image }: AlbumInterface = data || {};
 

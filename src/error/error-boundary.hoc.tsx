@@ -20,7 +20,15 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
     hasError: false,
   };
 
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
+  static getDerivedStateFromError(error: Error) {
+    return { hasError: true };
+  }
+
+  componentDidUpdate(
+    prevProps: Readonly<ErrorBoundaryProps>,
+    prevState: Readonly<ErrorBoundaryState>,
+    snapshot?: any,
+  ): void {
     if (this.props.errors[this.props.containerName] !== undefined) {
       this.setState({ hasError: true });
     }
