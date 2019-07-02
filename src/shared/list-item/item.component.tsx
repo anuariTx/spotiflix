@@ -76,8 +76,6 @@ export const Item = ({ title, subtitle, imageURL, isRound, classes }: ItemPropsI
 };
 
 Item.defaultProps = {
-  subtitle: '',
-  imageURL: '',
   isRound: false,
 };
 
