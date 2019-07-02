@@ -64,7 +64,7 @@ export const Item = ({ title, subtitle, imageURL, isRound, classes }: ItemPropsI
     <LazyLoad>
       <div className={`item ${classes.item}`}>
         <img
-          className={`item__image ${isRound && 'item__image--round'}`}
+          className={`item__image ${isRound ? 'item__image--round' : ''}`}
           src={imageURL}
           alt={title}
         />

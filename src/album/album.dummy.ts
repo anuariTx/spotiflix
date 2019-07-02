@@ -176,7 +176,7 @@ export const albumContainer = {
   state: successState,
 };
 
-export const gridList = {
+export const listProps = {
   ids: [
     '1oW3v5Har9mvXnGk0x4fHm',
     '1DBkJIEoeHrTX4WCBQGcCi',

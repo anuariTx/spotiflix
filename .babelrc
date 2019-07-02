@@ -26,7 +26,7 @@
           "@constants": "./src/shared/constants",
           "@interfaces": "./src/shared/interfaces",
           "@layout": "./src/shared/layout",
-          "@lists": "./src/shared/lists",
+          "@list-item": "./src/shared/list-item",
           "@rdx": "./src/shared/rdx",
           "@routes": "./src/shared/routes",
           "@themes": "./src/shared/themes",

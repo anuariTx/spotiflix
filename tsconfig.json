@@ -36,7 +36,7 @@
       "@constants/*": ["shared/constants/*"],
       "@interfaces/*": ["shared/interfaces/*"],
       "@layout/*": ["shared/layout/*"],
-      "@lists/*": ["shared/lists/*"],
+      "@list-item/*": ["shared/list-item/*"],
       "@rdx/*": ["shared/rdx/*"],
       "@routes/*": ["shared/routes/*"],
       "@themes/*": ["shared/themes/*"],

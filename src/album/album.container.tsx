@@ -7,9 +7,9 @@ import { connect } from 'react-redux';
 import { clearErrorAction } from '@error/error.action';
 import { fetchAlbumAction } from './album.action';
 
-import { ItemLoadingComponent } from '@lists/item/item.loading';
+import { ItemLoadingComponent } from '@list-item/item.loading';
 
-const ItemComponent = lazy(() => import('@lists/item/item.lazy'));
+const ItemComponent = lazy(() => import('@list-item/item.lazy'));
 
 export interface AlbumContainerPropsInterface extends AlbumItemInterface {
   id: string;
