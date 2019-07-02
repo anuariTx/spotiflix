@@ -1,0 +1,11 @@
+.album-carousel {
+  max-width: 80%;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.album-carousel ul {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}

@@ -7,11 +7,12 @@ import { Provider } from 'react-redux';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { albumContainer, albums, gridList } from '@album/album.dummy';
+import { albumContainer, albums, listProps } from '@album/album.dummy';
 
 import { Album } from './album.container';
 import { Grid } from '@album/grid.container';
-import { ItemErrorComponent } from '@lists/item/item.error';
+import { Carousel } from '@album/carousel.container';
+import { ItemErrorComponent } from '@list-item/item.error';
 
 const actions = {
   clearErrorAction: action('clearErrorAction'),
@@ -41,4 +42,5 @@ storiesOf('Album', module)
   .add('Album Container', () => (
     <Album fallback={<ItemErrorComponent />} {...albumContainer} {...actions} />
   ))
-  .add('Album Grid', () => <Grid {...gridList} />);
+  .add('Album Grid', () => <Grid {...listProps} />)
+  .add('Album Carousel', () => <Carousel {...listProps} />);

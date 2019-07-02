@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 import { ErrorBoundaryHOC } from '@error/error-boundary.hoc';
 import { AlbumContainer } from '@album/album.container';
-import { ItemErrorComponent } from '@lists/item/item.error';
+import { ItemErrorComponent } from '@list-item/item.error';
 
 import './grid.styles.css';
 
