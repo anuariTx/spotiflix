@@ -1,17 +1,18 @@
 import React from 'react';
 
-import { AppStateInterface } from '@rdx/root.reducer';
-import { AlbumsStateInterface } from '@album/albums.reducer';
+import { AlbumsStateInterface } from './albums.reducer';
 
 import { connect } from 'react-redux';
+import { makeAlbumsSelector } from './albums.selectors';
 
 import BrainhubCarousel from '@brainhubeu/react-carousel';
 import { ErrorBoundaryHOC } from '@error/error-boundary.hoc';
-import { AlbumContainer } from '@album/album.container';
+import { AlbumContainer } from './album.container';
 import { ItemErrorComponent } from '@list-item/item.error';
 
 import '@brainhubeu/react-carousel/lib/style.css';
 import './carousel.styles.css';
+import { createSelector } from 'reselect';
 
 export interface CarouselContainerPropsInterface {
   ids: string[];
@@ -70,8 +71,12 @@ export const Carousel = ({ ids, areRound, albums }: CarouselContainerPropsInterf
   );
 };
 
-const mapStateToProps = (state: AppStateInterface) => ({
-  albums: state.albums,
-});
+const makeMapStateToProps = () => {
+  const albumsSelector = makeAlbumsSelector();
+  return createSelector(
+    albumsSelector,
+    (albums: AlbumsStateInterface) => ({ albums }),
+  );
+};
 
-export const CarouselContainer = connect(mapStateToProps)(Carousel);
+export const CarouselContainer = connect(makeMapStateToProps)(Carousel);
